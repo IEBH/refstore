@@ -10,7 +10,7 @@ import CustomOffcanvasRef from './components/CustomOffcanvasRef.vue';
 
 
 
-const references = ref('0');
+const references = ref(0);
 const handleClick = (e) => {
       references.value = e;
       const el = document.getElementById('myOffcanvas')

@@ -1,23 +1,27 @@
 <script setup>
 import FileUpload from './FileUpload.vue';
 defineProps({
-      refs: String
+      refs: Number
 })
 </script>
 <template>
       <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="myOffcanvas" aria-labelledby="offcanvasLabel" style="width: 600px;">
-            <div class="offcanvas-header">
+            <nav class="navbar bg-dark border-bottom" data-bs-theme="dark">
+                  <div class="container-fluid">
+                        <h5 class="navbar-brand"> References </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
+                  </div>
+            </nav>
+            <!--<div class="offcanvas-header">
                   <h5 class="offcanvas-title"> References </h5>
                   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
-            </div>
+            </div>-->
             <div class="offcanvas-body">
-                  <div class="btn-group-vertical w-100" role="group" aria-label="Vertical button group">
-                        <button class="btn glass-btn text-black" type="button">{{refs}}</button>
-                        <button class="btn glass-btn text-black" type="button">{{refs}}</button>
+                  <FileUpload v-if="refs==0"/>
+                  <div class="btn-group-vertical w-100" role="group" aria-label="Vertical button group" v-if="refs>0">
                         <button class="btn glass-btn text-black" type="button">{{refs}}</button>
                         <button class="btn glass-btn text-black" type="button">{{refs}}</button>
                   </div>
-                  <FileUpload/>
             </div>
       </div>
 </template>

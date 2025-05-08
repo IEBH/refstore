@@ -2,8 +2,8 @@
 import TeraFileSelect from '@iebh/tera-fy/widgets/tera-file-select.vue';
 import { ref } from 'vue';
 
-const file = ref(null)
-const references = ref(0)
+let file = ref(null)
+let references = ref(0)
 
 const fileInputEvent = (e) => {
       file = e;
