@@ -7,7 +7,9 @@ import { VueFlow } from '@vue-flow/core';
 import { ref } from "vue";
 import { Offcanvas } from 'bootstrap'
 import CustomOffcanvasRef from './components/CustomOffcanvasRef.vue';
-
+//Store
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 
 const references = ref(0);
@@ -27,15 +29,26 @@ const onEdgeClick=(( edge) => {
       }
 })
 
+const save = () => {
+      this.$teraSync.saveState();
+}
+
+const store = useStore()
+const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'] )
 
 </script>
 
 <template>
       <nav class="navbar bg-dark border-bottom" data-bs-theme="dark">
-            <div class="container-fluid">
-                  <h5 class="navbar-brand"> Ref Store </h5>
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                  <h5 class="navbar-brand mb-0 text-white text-start">Ref Store</h5>
+                  <div class="d-flex align-items-center">
+                        <div class="me-2 text-white">{{ saveStatus }}</div>
+                        <button v-if="saveStatus!=='Saved'" class="btn btn-outline-light" @click="save">Save </button>
+                        <button v-else class="btn btn-danger">Clear</button>
+                  </div>
             </div>
-      </nav>  
+      </nav>
     
       <div class="card" style="width: 100%; height: 100vh;">
             <div class="row g-1">
@@ -61,8 +74,4 @@ const onEdgeClick=(( edge) => {
       <CustomOffcanvasRef :refs="references"/>
 </template>
 
-<style scoped>
-.vue-flow__container {
-      overflow-x: auto
-}
-</style>
+<style scoped></style>

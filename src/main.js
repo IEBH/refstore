@@ -15,6 +15,18 @@ import Aura from '@primeuix/themes/aura';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
+//Sync State
+import store from './store'
+import { createSyncPlugin } from '@iebh/vuex-tera-json'
+
+const teraSyncPluginSetup = createSyncPlugin('refstore', true, {
+      debounceMs: 100
+})
+const teraSyncApi = teraSyncPluginSetup(store)
+app.config.globalProperties.$teraSync = teraSyncApi
+app.use(store)
+
+
 //TeraFy
 import TeraFy from '@iebh/tera-fy';
 import TerafyVue from '@iebh/tera-fy/plugins/vue3';
@@ -28,6 +40,8 @@ app.use(terafy.vuePlugin({
       globalName: '$tera', // Install as vm.$tera into every component
 }));
 
+//vuex-tera-json
+//import { createSyncPlugin } from '@iebh/vuex-tera-json'
 
 app.use(PrimeVue, {
       theme: {
