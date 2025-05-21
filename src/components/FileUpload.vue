@@ -2,7 +2,7 @@
 import TeraFileSelect from '@iebh/tera-fy/widgets/tera-file-select.vue';
 import { ref } from 'vue';
 
-let file = ref(null)
+let file = ref(Object)
 let references = ref(0)
 
 const fileInputEvent = (e) => {
@@ -29,7 +29,7 @@ const getReferences= () => {
 			placeholder="Select/Upload a file..."
 			@change="fileInputEvent($event)"
 		/>
-            <button v-if="file" class="btn custom-btn"  @click="getReferences">Upload</button>
+            <button class="btn custom-btn"  @click="getReferences">Upload</button>
       </div>
 </template>
 <style scoped>
