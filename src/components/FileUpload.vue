@@ -29,16 +29,16 @@ const getReferences= () => {
 			placeholder="Select/Upload a file..."
 			@change="fileInputEvent($event)"
 		/>
-            <button class="btn custom-btn"  @click="getReferences">Upload</button>
+            <button v-if="file" class="btn custom-btn"  @click="getReferences">Upload</button>
       </div>
 </template>
 <style scoped>
 .custom-btn {
-  background-color: #579470; /* 自定义背景色 */
-  color: white;              /* 字体颜色 */
-  border: none;              /* 可选：移除边框 */
+  background-color: #579470; 
+  color: white;              
+  border: none;              
 }
 .custom-btn:hover {
-  background-color: #5da079; /* hover 效果 */
+  background-color: #5da079; 
 }
 </style>
