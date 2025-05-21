@@ -6,6 +6,7 @@ let file = ref(null)
 let references = ref(0)
 
 const fileInputEvent = (e) => {
+      console.log("[fileUpload]:", e);
       file = e;
 }
 
