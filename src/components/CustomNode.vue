@@ -1,7 +1,8 @@
 <script setup>
 import { Handle } from '@vue-flow/core'
 defineProps({
-      labels: Array
+      labels: Array,
+      refs: Number
 })
 
 const showRefs = () => {
@@ -16,8 +17,8 @@ const showRefs = () => {
             <Handle type="target" position="left" id="left" />
             <div v-for="(res, index) in labels" :key="index">
                   <h6 v-if="res.label">{{ res.label }}</h6>
-                  <a v-if="res.link>0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.link)">{{ res.link }}</a>
-                  <a v-if="res.link==0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.link)">Import Files...</a>
+                  <a v-if="refs>0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.link)">{{ refs }}</a>
+                  <a v-if="refs==0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.link)">Import Files...</a>
             </div>
       </div>
 </template>

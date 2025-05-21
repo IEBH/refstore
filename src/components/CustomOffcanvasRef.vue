@@ -3,6 +3,11 @@ import FileUpload from './FileUpload.vue';
 defineProps({
       refs: Number
 })
+
+const getAllRefs = (e) => {
+      refs = e.length();
+      console.log("[fileRead refs]:", refs);
+}
 </script>
 <template>
       <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="myOffcanvas" aria-labelledby="offcanvasLabel" style="width: 600px;">
@@ -17,7 +22,7 @@ defineProps({
                   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
             </div>-->
             <div class="offcanvas-body">
-                  <FileUpload v-if="refs==0"/>
+                  <FileUpload v-if="refs==0" @references="getAllRefs"/>
                   <div class="btn-group-vertical w-100" role="group" aria-label="Vertical button group" v-if="refs>0">
                         <button class="btn glass-btn text-black" type="button">{{refs}}</button>
                         <button class="btn glass-btn text-black" type="button">{{refs}}</button>

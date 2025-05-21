@@ -13,8 +13,8 @@ import { computed } from 'vue';
 
 
 const references = ref(0);
-const handleClick = (e) => {
-      references.value = e;
+const handleClick = () => {
+      //references.value = e;
       const el = document.getElementById('myOffcanvas')
       if (el) {
             const refTab = new Offcanvas(el);
@@ -64,7 +64,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
             </div>
             <VueFlow :nodes="vueFlowTable.nodes" :edges="vueFlowTable.edges" :onEdgeClick="onEdgeClick" :nodes-draggable="false"  :nodes-connectable="false" :pan-on-drag="false" :zoom-on-scroll="false" :zoom-on-double-click="false" fit-view>
                   <template #node-customNode="{data}">
-                        <CustomNode :labels="data.labels" @link-clicked="handleClick" />
+                        <CustomNode :labels="data.labels" @link-clicked="handleClick" :refs="references"/>
                   </template>
                   <template #node-customTextNode="{data}">
                         <CustomTextNode :labels="data.labels"/>

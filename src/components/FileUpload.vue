@@ -3,10 +3,10 @@ import TeraFileSelect from '@iebh/tera-fy/widgets/tera-file-select.vue';
 import { ref } from 'vue';
 
 let file = ref(Object)
-let references = ref(0)
+let references = ref(Array)
 
 const fileInputEvent = (e) => {
-      console.log("[fileUpload]:", e);
+      console.log("[Refstore-fileUpload]:", e);
       file = e;
 }
 
@@ -15,7 +15,7 @@ const getReferences= () => {
       Promise.resolve()
             .then(() => file.getRefs())
             .then(refs => {
-                  console.log("refs:", refs);
+                  console.log("[Refstore-fileUpload Refs]:", refs);
                   references = refs;
                   this.$emit("references", references)
       })
