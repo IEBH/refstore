@@ -148,40 +148,6 @@ const vueFlowTable = ref({
         ],
       },
     },
-    //Searching-Tools:
-    {
-      id: "pubmed",
-      type: "customTextNode",
-      position: {
-        x: 650,
-        y: 90,
-      },
-      data: {
-        labels: [{ label: "PubMed", link: "https://pubmed.ncbi.nlm.nih.gov/" }],
-      },
-    },
-    {
-      id: "embase",
-      type: "customTextNode",
-      position: {
-        x: 750,
-        y: 90,
-      },
-      data: {
-        labels: [{ label: "Embase", link: "https://www.embase.com/" }],
-      },
-    },
-    {
-      id: "cinahl",
-      type: "customTextNode",
-      position: {
-        x: 850,
-        y: 90,
-      },
-      data: {
-        labels: [{ label: "CINAHL", link: "" }],
-      },
-    },
     //Other-Nodes:
     {
       id: "other-results-1",
@@ -347,30 +313,6 @@ const vueFlowTable = ref({
       type: "smoothstep",
       sourceHandle: "right",
       targetHandle: "left",
-    },
-    {
-      id: "nt-4",
-      source: "pubmed",
-      target: "search-results",
-      type: "smoothstep",
-      sourceHandle: "bottom",
-      targetHandle: "top",
-    },
-    {
-      id: "nt-5",
-      source: "embase",
-      target: "search-results",
-      type: "smoothstep",
-      sourceHandle: "bottom",
-      targetHandle: "top",
-    },
-    {
-      id: "nt-6",
-      source: "cinahl",
-      target: "search-results",
-      type: "smoothstep",
-      sourceHandle: "bottom",
-      targetHandle: "top",
     },
   ].map((edges) => ({
     ...edges,
