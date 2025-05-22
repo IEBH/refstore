@@ -4,14 +4,14 @@ import { vueFlowTable } from './components/FlowTable'
 import CustomNode from './components/CustomNode.vue';
 import CustomTextNode from './components/CustomTextNode.vue';
 import { VueFlow } from '@vue-flow/core';
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import { Offcanvas } from 'bootstrap'
 import CustomOffcanvasRef from './components/CustomOffcanvasRef.vue';
 //Store
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 
-const refsObject = reactive({
+const refsObject = ref({
       id: '',
       refnum: 0
 })
@@ -20,8 +20,7 @@ const refsObject = reactive({
 const handleClick = (node) => {
       //offcanvasID.value = node,key
       console.log("node:", node);
-      refsObject.id = node.key;
-      refsObject.refnum = node.link;
+      refsObject.value = node;
       const el = document.getElementById('myOffcanvas')
       if (el) {
             const refTab = new Offcanvas(el);
@@ -78,7 +77,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
                   </template>
             </VueFlow>
       </div>
-      <CustomOffcanvasRef :refs="refsObject" @updateRefsObj="refsObject=$event"  />
+      <CustomOffcanvasRef :refs="refsObject" @updateRefsObj="refsObject.value=$event"  />
 </template>
 
 <style scoped></style>
