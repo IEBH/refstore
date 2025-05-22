@@ -73,7 +73,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
                   </template>
             </VueFlow>
       </div>
-      <CustomOffcanvasRef :refs="references" :offcanvasID = offcanvasID />
+      <CustomOffcanvasRef :refs="references" @updateRefs="references=$event" :offcanvasID = offcanvasID />
 </template>
 
 <style scoped></style>

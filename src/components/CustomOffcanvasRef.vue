@@ -1,15 +1,20 @@
 <script setup>
 import FileUpload from './FileUpload.vue';
+import { ref } from 'vue';
 const props = defineProps({
       refs: Number,
       offcanvasID: String
 })
-
+const refFiles = ref(0);
+const emit = defineEmits(['updateRefs']);
 const getAllRefs = (e) => {
-      console.log("[fileRead e]:",e)
-      props.refs = e.length;
-      console.log("[fileRead refs]:", refs);
+      //TODO: foreach all refs and show details + get filepath
+      refFiles.value = e.length;
+      emit('updateRefs', e.length)
+      console.log("[fileRead refs]:", props.refs);
 }
+
+
 </script>
 <template>
       <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="myOffcanvas" aria-labelledby="offcanvasLabel" style="width: 600px;">
@@ -26,8 +31,8 @@ const getAllRefs = (e) => {
             <div class="offcanvas-body">
                   <FileUpload v-if="refs==0" @references="getAllRefs"/>
                   <div class="btn-group-vertical w-100" role="group" aria-label="Vertical button group" v-if="refs>0">
-                        <button class="btn glass-btn text-black" type="button">{{refs}}</button>
-                        <button class="btn glass-btn text-black" type="button">{{refs}}</button>
+                        <button class="btn glass-btn text-black" type="button">{{refFiles}}</button>
+                        <button class="btn glass-btn text-black" type="button">{{refFiles}}</button>
                   </div>
             </div>
       </div>
