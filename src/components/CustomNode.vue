@@ -1,12 +1,16 @@
 <script setup>
 import { Handle } from '@vue-flow/core'
+import { computed } from 'vue';
 
 const props = defineProps({
       labels: Array,
-      refs: Number
+      refobj: Object
 })
 
-
+const updateRefsNum = computed((res) => {
+      res.link = props.refobj.refnum;
+      return props.refobj.refnum;
+})
 </script>
 <template>
       <div class="custom-node">
@@ -16,8 +20,12 @@ const props = defineProps({
             <Handle type="target" position="left" id="left" />
             <div v-for="(res, index) in labels" :key="index">
                   <h6 v-if="res.label">{{ res.label }}</h6>
-                  <a v-if="refs>0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.key)">{{ refs }}</a>
-                  <a v-if="refs==0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.key)">Import Files...</a>
+                  <a v-if="res.label === refobj.id" href="#refs_tab" @click.prevent="$emit('link-clicked', res.key)"> {{ updateRefsNum }}</a>
+                  <div v-else>
+                        <a v-if="res.link>0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.key)">{{ res.link }}</a>
+                        <a v-if="res.link==0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.key)">Import Files...</a>
+                  </div>
+                  
             </div>
       </div>
 </template>
