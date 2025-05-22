@@ -6,7 +6,8 @@ defineProps({
 })
 
 const getAllRefs = (e) => {
-      refs = e.length();
+      console.log("[fileRead e]:",e)
+      refs = e.length;
       console.log("[fileRead refs]:", refs);
 }
 </script>
