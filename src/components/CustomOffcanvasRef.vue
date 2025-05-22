@@ -1,7 +1,8 @@
 <script setup>
 import FileUpload from './FileUpload.vue';
 defineProps({
-      refs: Number
+      refs: Number,
+      offcanvasID: String
 })
 
 const getAllRefs = (e) => {
@@ -13,7 +14,7 @@ const getAllRefs = (e) => {
       <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="myOffcanvas" aria-labelledby="offcanvasLabel" style="width: 600px;">
             <nav class="navbar bg-dark border-bottom" data-bs-theme="dark">
                   <div class="container-fluid">
-                        <h5 class="navbar-brand"> References </h5>
+                        <h5 class="navbar-brand"> {{ offcanvasID }} (References) </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
                   </div>
             </nav>

@@ -18,7 +18,7 @@ const vueFlowTable = ref({
       },
       data: {
         labels: [
-          { label: "Seed Studies", link: 0 }, //TODO: Get fuction()
+          { key: "Seed Studies", label: "Seed Studies", link: 0 }, //TODO: Get fuction()
         ],
       },
     },
@@ -75,7 +75,7 @@ const vueFlowTable = ref({
         y: 160,
       },
       data: {
-        labels: [{ label: "Search Results", link: 0 }],
+        labels: [{ key: "Search Results", label: "Search Results", link: 0 }],
       },
     },
     {
@@ -86,7 +86,13 @@ const vueFlowTable = ref({
         y: 326,
       },
       data: {
-        labels: [{ label: "Title/Abstract Screening", link: 0 }],
+        labels: [
+          {
+            key: "Title/Abstract Screening",
+            label: "Title/Abstract Screening",
+            link: 0,
+          },
+        ],
       },
     },
     {
@@ -97,7 +103,9 @@ const vueFlowTable = ref({
         y: 480,
       },
       data: {
-        labels: [{ label: "Full Text Screening", link: 0 }],
+        labels: [
+          { key: "Full Text Screening", label: "Full Text Screening", link: 0 },
+        ],
       },
     },
     {
@@ -108,7 +116,9 @@ const vueFlowTable = ref({
         y: 600,
       },
       data: {
-        labels: [{ label: "Included Studies", link: 0 }],
+        labels: [
+          { key: "Included Studies", label: "Included Studies", link: 0 },
+        ],
       },
     },
     {
@@ -119,7 +129,7 @@ const vueFlowTable = ref({
         y: 160,
       },
       data: {
-        labels: [{ label: "Results Removed", link: 0 }],
+        labels: [{ key: "Results Removed", label: "Results Removed", link: 0 }],
       },
     },
     {
@@ -130,7 +140,7 @@ const vueFlowTable = ref({
         y: 326,
       },
       data: {
-        labels: [{ label: "Results Removed", link: 0 }],
+        labels: [{ key: "Results Removed", label: "Results Removed", link: 0 }],
       },
     },
     {
@@ -142,9 +152,13 @@ const vueFlowTable = ref({
       },
       data: {
         labels: [
-          { label: "Results Removed", link: 0 },
-          { label: "Reason Wrong Population", link: 0 },
-          { label: "Wrong Intervention", link: 0 },
+          { key: "Results Removed", label: "Results Removed", link: 0 },
+          {
+            key: "Reason Wrong Population",
+            label: "Reason Wrong Population",
+            link: 0,
+          },
+          { key: "Wrong Intervention", label: "Wrong Intervention", link: 0 },
         ],
       },
     },
@@ -158,8 +172,8 @@ const vueFlowTable = ref({
       },
       data: {
         labels: [
-          { label: "Other Results", link: 0 },
-          { label: "Citation Searching", link: 0 },
+          { key: "Other Results", label: "Other Results", link: 0 },
+          { key: "Citation Searching", label: "Citation Searching", link: 0 },
         ],
       },
     },
@@ -171,7 +185,13 @@ const vueFlowTable = ref({
         y: 326,
       },
       data: {
-        labels: [{ label: "Title/Abstract Screening", link: 0 }],
+        labels: [
+          {
+            key: "Title/Abstract Screening",
+            label: "Title/Abstract Screening",
+            link: 0,
+          },
+        ],
       },
     },
     {
@@ -182,7 +202,9 @@ const vueFlowTable = ref({
         y: 480,
       },
       data: {
-        labels: [{ label: "Full Text Screening", link: 0 }],
+        labels: [
+          { key: "Full Text Screening", label: "Full Text Screening", link: 0 },
+        ],
       },
     },
   ],

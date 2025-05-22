@@ -13,8 +13,10 @@ import { computed } from 'vue';
 
 
 const references = ref(0);
-const handleClick = () => {
+const offcanvasID = ref('');
+const handleClick = (key) => {
       //references.value = e;
+      offcanvasID.value = key;
       const el = document.getElementById('myOffcanvas')
       if (el) {
             const refTab = new Offcanvas(el);
@@ -71,7 +73,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
                   </template>
             </VueFlow>
       </div>
-      <CustomOffcanvasRef :refs="references"/>
+      <CustomOffcanvasRef :refs="references" :offcanvasID = offcanvasID />
 </template>
 
 <style scoped></style>

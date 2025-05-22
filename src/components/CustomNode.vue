@@ -1,13 +1,12 @@
 <script setup>
 import { Handle } from '@vue-flow/core'
-defineProps({
+
+const props = defineProps({
       labels: Array,
       refs: Number
 })
 
-const showRefs = () => {
-      //TODO: Grab all refs and show
-}
+
 </script>
 <template>
       <div class="custom-node">
@@ -17,8 +16,8 @@ const showRefs = () => {
             <Handle type="target" position="left" id="left" />
             <div v-for="(res, index) in labels" :key="index">
                   <h6 v-if="res.label">{{ res.label }}</h6>
-                  <a v-if="refs>0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.link)">{{ refs }}</a>
-                  <a v-if="refs==0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.link)">Import Files...</a>
+                  <a v-if="refs>0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.key)">{{ refs }}</a>
+                  <a v-if="refs==0" href="#refs_tab" @click.prevent="$emit('link-clicked', res.key)">Import Files...</a>
             </div>
       </div>
 </template>
