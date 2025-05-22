@@ -1,5 +1,6 @@
 <script setup>
 import FileUpload from './FileUpload.vue';
+import LibraryRef from './LibraryRef.vue';
 import { ref } from 'vue';
 const props = defineProps({
       refs: Object,
@@ -10,11 +11,14 @@ const emit = defineEmits(['updateRefsObj']);
 const getAllRefs = (e) => {
       //TODO: foreach all refs and show details + get filepath
       refFiles.value = e.length;
+      reflib.value=e;
       //emit('updateRefs', e.length)
       emit('updateRefsObj', {id: props.refs.id, refnum: e.length})
       console.log("[fileRead refs]:", {id: props.refs.id, refnum: e.length});
 }
 
+//Ref-library
+const reflib= ref([])
 
 </script>
 <template>
@@ -31,10 +35,11 @@ const getAllRefs = (e) => {
             </div>-->
             <div class="offcanvas-body">
                   <FileUpload v-if="refs.refnum==0" @references="getAllRefs"/>
-                  <div class="btn-group-vertical w-100" role="group" aria-label="Vertical button group" v-if="refs>0">
+                  <div class="btn-group-vertical w-100" role="group" aria-label="Vertical button group" v-if="refs.refnum>0">
                         <button class="btn glass-btn text-black" type="button">{{refFiles}}</button>
                         <button class="btn glass-btn text-black" type="button">{{refFiles}}</button>
                   </div>
+                  <LibraryRef :reflib="reflib" />
             </div>
       </div>
 </template>
