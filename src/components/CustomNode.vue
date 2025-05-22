@@ -7,11 +7,11 @@ const props = defineProps({
       refsObj: Object
 })
 
-const updateRefsNum = computed((res) => {
+const updateRefsNum = (res) => {
       console.log("res:", res);
       res.link = props.refsObj.refnum;
       return props.refsObj.refnum;
-})
+}
 </script>
 <template>
       <div class="custom-node">
