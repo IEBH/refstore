@@ -1,6 +1,5 @@
 <script setup>
 import { Handle } from '@vue-flow/core'
-import { computed } from 'vue';
 
 const props = defineProps({
       labels: Array,
