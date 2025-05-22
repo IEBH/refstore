@@ -4,12 +4,12 @@ import { computed } from 'vue';
 
 const props = defineProps({
       labels: Array,
-      refobj: Object
+      refsObj: Object
 })
 
 const updateRefsNum = computed((res) => {
-      res.link = props.refobj.refnum;
-      return props.refobj.refnum;
+      res.link = props.refsObj.refnum;
+      return props.refsObj.refnum;
 })
 </script>
 <template>
@@ -20,7 +20,7 @@ const updateRefsNum = computed((res) => {
             <Handle type="target" position="left" id="left" />
             <div v-for="(res, index) in labels" :key="index">
                   <h6 v-if="res.label">{{ res.label }}</h6>
-                  <a v-if="res.label === refobj.id" href="#refs_tab" @click.prevent="$emit('link-clicked', res)"> {{ updateRefsNum }}</a>
+                  <a v-if="res.label === refsObj.id" href="#refs_tab" @click.prevent="$emit('link-clicked', res)"> {{ updateRefsNum }}</a>
                   <div v-else>
                         <a v-if="res.link>0" href="#refs_tab" @click.prevent="$emit('link-clicked', res)">{{ res.link }}</a>
                         <a v-if="res.link==0" href="#refs_tab" @click.prevent="$emit('link-clicked', res)">Import Files...</a>
