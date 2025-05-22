@@ -4,18 +4,20 @@ import { vueFlowTable } from './components/FlowTable'
 import CustomNode from './components/CustomNode.vue';
 import CustomTextNode from './components/CustomTextNode.vue';
 import { VueFlow } from '@vue-flow/core';
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import { Offcanvas } from 'bootstrap'
 import CustomOffcanvasRef from './components/CustomOffcanvasRef.vue';
 //Store
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 
-
-const references = ref(0);
+const refsObject = reactive({
+      id: '',
+      refnum: 0
+})
+//const references = ref(0);
 const offcanvasID = ref('');
 const handleClick = (key) => {
-      //references.value = e;
       offcanvasID.value = key;
       const el = document.getElementById('myOffcanvas')
       if (el) {
@@ -66,14 +68,14 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
             </div>
             <VueFlow :nodes="vueFlowTable.nodes" :edges="vueFlowTable.edges" :onEdgeClick="onEdgeClick" :nodes-draggable="false"  :nodes-connectable="false" :pan-on-drag="false" :zoom-on-scroll="false" :zoom-on-double-click="false" fit-view>
                   <template #node-customNode="{data}">
-                        <CustomNode :labels="data.labels" @link-clicked="handleClick" :refs="references"/>
+                        <CustomNode :labels="data.labels" @link-clicked="handleClick" :refsObj="refsObject"/>
                   </template>
                   <template #node-customTextNode="{data}">
                         <CustomTextNode :labels="data.labels"/>
                   </template>
             </VueFlow>
       </div>
-      <CustomOffcanvasRef :refs="references" @updateRefs="references=$event" :offcanvasID = offcanvasID />
+      <CustomOffcanvasRef :refs="refsObject" @updateRefsObj="refsObject=$event" :offcanvasID = offcanvasID />
 </template>
 
 <style scoped></style>
