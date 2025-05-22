@@ -16,9 +16,10 @@ const refsObject = reactive({
       refnum: 0
 })
 //const references = ref(0);
-const offcanvasID = ref('');
-const handleClick = (key) => {
-      offcanvasID.value = key;
+//const offcanvasID = ref('');
+const handleClick = (node) => {
+      //offcanvasID.value = node,key
+      refsObject.value = {id: node.key, refnum: node.link}
       const el = document.getElementById('myOffcanvas')
       if (el) {
             const refTab = new Offcanvas(el);
@@ -75,7 +76,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
                   </template>
             </VueFlow>
       </div>
-      <CustomOffcanvasRef :refs="refsObject" @updateRefsObj="refsObject=$event" :offcanvasID = offcanvasID />
+      <CustomOffcanvasRef :refs="refsObject" @updateRefsObj="refsObject=$event"  />
 </template>
 
 <style scoped></style>
