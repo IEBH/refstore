@@ -10,6 +10,7 @@ const fileInputEvent = (e) => {
       file = e;
 }
 
+const emit = defineEmits(['references'])
 const getReferences= () => {
       if (!file) return;
       Promise.resolve()
@@ -17,7 +18,7 @@ const getReferences= () => {
             .then(refs => {
                   console.log("[Refstore-fileUpload Refs]:", refs);
                   references = refs;
-                  this.$emit("references", references)
+                  emit("references", references)
       })
 }
 </script>
