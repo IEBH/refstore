@@ -1,13 +1,13 @@
 <script setup>
 import FileUpload from './FileUpload.vue';
-defineProps({
+const props = defineProps({
       refs: Number,
       offcanvasID: String
 })
 
 const getAllRefs = (e) => {
       console.log("[fileRead e]:",e)
-      refs = e.length;
+      props.refs = e.length;
       console.log("[fileRead refs]:", refs);
 }
 </script>
