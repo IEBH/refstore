@@ -4,14 +4,14 @@ import { vueFlowTable } from './components/FlowTable'
 import CustomNode from './components/CustomNode.vue';
 import CustomTextNode from './components/CustomTextNode.vue';
 import { VueFlow } from '@vue-flow/core';
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import { Offcanvas } from 'bootstrap'
 import CustomOffcanvasRef from './components/CustomOffcanvasRef.vue';
 //Store
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 
-const refsObject = ref({
+const refsObject = reactive({
       id: '',
       refnum: 0
 })
@@ -20,7 +20,8 @@ const refsObject = ref({
 const handleClick = (node) => {
       //offcanvasID.value = node,key
       console.log("node:", node);
-      refsObject.value = node;
+      refsObject.id = node.key;
+      refsObject.refnum = node.link;
       const el = document.getElementById('myOffcanvas')
       if (el) {
             const refTab = new Offcanvas(el);
@@ -34,11 +35,14 @@ const onEdgeClick=(( edge) => {
             window.open(edge.edge.data.linkUrl, '_blank');
       }
 })
+const updateRefsObj = (event) => {
+      refsObject.id = event.id;
+      refsObject.refnum = event.refnum;
+}
 
 const save = () => {
       this.$teraSync.saveState();
 }
-
 const store = useStore()
 const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'] )
 
@@ -77,7 +81,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
                   </template>
             </VueFlow>
       </div>
-      <CustomOffcanvasRef :refs="refsObject" @updateRefsObj="refsObject.value=$event"  />
+      <CustomOffcanvasRef :refs="refsObject" @updateRefsObj="updateRefsObj($event)"  />
 </template>
 
 <style scoped></style>
