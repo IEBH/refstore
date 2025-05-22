@@ -19,7 +19,9 @@ const refsObject = reactive({
 //const offcanvasID = ref('');
 const handleClick = (node) => {
       //offcanvasID.value = node,key
-      refsObject.value = {id: node.key, refnum: node.link}
+      console.log("node:", node);
+      refsObject.id = node.key;
+      refsObject.refnum = node.link;
       const el = document.getElementById('myOffcanvas')
       if (el) {
             const refTab = new Offcanvas(el);
