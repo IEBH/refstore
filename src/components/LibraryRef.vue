@@ -17,7 +17,7 @@ const props =  defineProps({
                               <td class="text-start">{{ ref.title}}</td> 
                               <td class="text-start">
                                     <span v-for="author in (ref.authors || []).slice(0,3)" :key="author" class="bg-secondary text-white rounded px-2 py-1 small me-1 mb-1 d-inline-block"><i class="bi bi-person-fill"></i>{{ author }}</span>
-                                    <span v-if="(ref.authors || []).length>3" class="bg-secondary text-white rounded px-2 py-1 small me-1 mb-1 d-inline-block"><i class="bi bi-person-plus-fill"></i> {{ref.authors.length - 3}}</span>
+                                    <span v-if="(ref.authors || []).length>3" class="bg-body-secondary text-dark rounded px-2 py-1 small me-1 mb-1 d-inline-block"><i class="bi bi-person-plus-fill"></i> {{ref.authors.length - 3}}</span>
                               </td>
                         </tr>
                   </tbody>
