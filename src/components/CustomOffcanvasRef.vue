@@ -34,12 +34,8 @@ const reflib= ref([])
                   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
             </div>-->
             <div class="offcanvas-body">
-                  <FileUpload v-if="refs.refnum==0" @references="getAllRefs"/>
-                  <div class="btn-group-vertical w-100" role="group" aria-label="Vertical button group" v-if="refs.refnum>0">
-                        <button class="btn glass-btn text-black" type="button">{{refFiles}}</button>
-                        <button class="btn glass-btn text-black" type="button">{{refFiles}}</button>
-                  </div>
-                  <LibraryRef :reflib="reflib" />
+                  <FileUpload v-if="refs.refnum == 0" @references="getAllRefs" />
+                  <LibraryRef v-if="refs.refnum>0" :reflib="reflib" />
             </div>
       </div>
 </template>

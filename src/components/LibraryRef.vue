@@ -5,7 +5,7 @@ const props =  defineProps({
 </script>
 <template>
       <div>
-            <table class="table table-hover table-responsive">
+            <table class="table table-hover table-responsive" v-if="reflib.length>0">
                   <thead>
 					<tr>
 						<th class="text-start" scope="col">Title</th>
