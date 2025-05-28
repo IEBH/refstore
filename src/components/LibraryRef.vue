@@ -1,6 +1,14 @@
 <script setup>
+import { onMounted } from 'vue'
+import { Tooltip } from 'bootstrap'
+
 const props =  defineProps({
       reflib: Array
+})
+
+onMounted(() => {
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  tooltipTriggerList.forEach(el => new Tooltip(el))
 })
 </script>
 <template>
