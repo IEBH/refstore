@@ -139,7 +139,7 @@ const vueFlowTable = ref({
       id: "results-removed-2",
       type: "customNode",
       position: {
-        x: 1126,
+        x: 1100,
         y: 160,
       },
       data: {
@@ -156,7 +156,7 @@ const vueFlowTable = ref({
       id: "results-removed-3",
       type: "customNode",
       position: {
-        x: 1130,
+        x: 1100,
         y: 326,
       },
       data: {
@@ -173,7 +173,7 @@ const vueFlowTable = ref({
       id: "results-removed-4",
       type: "customNode",
       position: {
-        x: 1100,
+        x: 1070,
         y: 429,
       },
       data: {
