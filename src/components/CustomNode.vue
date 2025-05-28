@@ -18,7 +18,7 @@ const updateRefsNum = (res) => {
             <Handle type="source" position="bottom" id="bottom"/>
             <Handle type="target" position="top" id="top"/>
             <Handle type="target" position="left" id="left" />
-            <div v-for="(res, index) in labels" :key="index">
+            <div v-for="res in labels" :key="res.key">
                   <h6 v-if="res.label">{{ res.label }}</h6>
                   <a v-if="res.label === refsObj.id" href="#refs_tab" @click.prevent="$emit('link-clicked', res)"> {{ updateRefsNum(res) }}</a>
                   <div v-else>

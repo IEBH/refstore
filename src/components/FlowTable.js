@@ -18,7 +18,7 @@ const vueFlowTable = ref({
       },
       data: {
         labels: [
-          { key: "Seed Studies", label: "Seed Studies", link: 0 }, //TODO: Get fuction()
+          { key: "Seed Studies(Designing)", label: "Seed Studies", link: 0 }, //TODO: Get fuction()
         ],
       },
     },
@@ -75,7 +75,13 @@ const vueFlowTable = ref({
         y: 160,
       },
       data: {
-        labels: [{ key: "Search Results", label: "Search Results", link: 0 }],
+        labels: [
+          {
+            key: "Search Results(Searching)",
+            label: "Search Results",
+            link: 0,
+          },
+        ],
       },
     },
     {
@@ -88,7 +94,7 @@ const vueFlowTable = ref({
       data: {
         labels: [
           {
-            key: "Title/Abstract Screening",
+            key: "Title/Abstract Screening(Searching)",
             label: "Title/Abstract Screening",
             link: 0,
           },
@@ -104,7 +110,11 @@ const vueFlowTable = ref({
       },
       data: {
         labels: [
-          { key: "Full Text Screening", label: "Full Text Screening", link: 0 },
+          {
+            key: "Full Text Screening(Searching)",
+            label: "Full Text Screening",
+            link: 0,
+          },
         ],
       },
     },
@@ -117,7 +127,11 @@ const vueFlowTable = ref({
       },
       data: {
         labels: [
-          { key: "Included Studies", label: "Included Studies", link: 0 },
+          {
+            key: "Included Studies(Searching)",
+            label: "Included Studies",
+            link: 0,
+          },
         ],
       },
     },
@@ -129,7 +143,13 @@ const vueFlowTable = ref({
         y: 160,
       },
       data: {
-        labels: [{ key: "Results Removed", label: "Results Removed", link: 0 }],
+        labels: [
+          {
+            key: "Search Results - Results Removed(Searching)",
+            label: "Results Removed",
+            link: 0,
+          },
+        ],
       },
     },
     {
@@ -140,7 +160,13 @@ const vueFlowTable = ref({
         y: 326,
       },
       data: {
-        labels: [{ key: "Results Removed", label: "Results Removed", link: 0 }],
+        labels: [
+          {
+            key: "Title/Abstract Screening - Results Removed(Searching)",
+            label: "Results Removed",
+            link: 0,
+          },
+        ],
       },
     },
     {
@@ -152,13 +178,21 @@ const vueFlowTable = ref({
       },
       data: {
         labels: [
-          { key: "Results Removed", label: "Results Removed", link: 0 },
           {
-            key: "Reason Wrong Population",
+            key: "Full Text Screening - Results Removed(Searching)",
+            label: "Results Removed",
+            link: 0,
+          },
+          {
+            key: "Full Text Screening - Wrong Population(Searching)",
             label: "Reason Wrong Population",
             link: 0,
           },
-          { key: "Wrong Intervention", label: "Wrong Intervention", link: 0 },
+          {
+            key: "Full Text Screening - Wrong Intervention(Searching)",
+            label: "Wrong Intervention",
+            link: 0,
+          },
         ],
       },
     },
@@ -172,8 +206,12 @@ const vueFlowTable = ref({
       },
       data: {
         labels: [
-          { key: "Other Results", label: "Other Results", link: 0 },
-          { key: "Citation Searching", label: "Citation Searching", link: 0 },
+          { key: "Other Results(Other)", label: "Other Results", link: 0 },
+          {
+            key: "Citation Searching(Other)",
+            label: "Citation Searching",
+            link: 0,
+          },
         ],
       },
     },
@@ -187,7 +225,7 @@ const vueFlowTable = ref({
       data: {
         labels: [
           {
-            key: "Title/Abstract Screening",
+            key: "Title/Abstract Screening(Other)",
             label: "Title/Abstract Screening",
             link: 0,
           },
@@ -203,7 +241,11 @@ const vueFlowTable = ref({
       },
       data: {
         labels: [
-          { key: "Full Text Screening", label: "Full Text Screening", link: 0 },
+          {
+            key: "Full Text Screening(Other)",
+            label: "Full Text Screening",
+            link: 0,
+          },
         ],
       },
     },

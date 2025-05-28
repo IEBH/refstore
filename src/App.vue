@@ -19,7 +19,7 @@ const refsObject = reactive({
 //const offcanvasID = ref('');
 const handleClick = (node) => {
       //offcanvasID.value = node,key
-      console.log("node:", node);
+      //console.log("node:", node);
       refsObject.id = node.key;
       refsObject.refnum = node.link;
       const el = document.getElementById('myOffcanvas')
@@ -30,7 +30,7 @@ const handleClick = (node) => {
 }
 
 const onEdgeClick=(( edge) => {
-      console.log('edge clicked', edge);
+      console.log('[EdgeClicked]:', edge);
       if (edge.edge.data?.linkUrl) {
             window.open(edge.edge.data.linkUrl, '_blank');
       }
