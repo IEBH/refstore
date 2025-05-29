@@ -82,8 +82,8 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
                   </div>
             </div>
             <VueFlow :nodes="vueFlowTable.nodes" :edges="vueFlowTable.edges" :onEdgeClick="onEdgeClick" :nodes-draggable="false"  :nodes-connectable="false" :pan-on-drag="false" :zoom-on-scroll="false" :zoom-on-double-click="false" fit-view>
-                  <template #node-customNode="{node}">
-                        <CustomNode :labels="node.data.labels" @link-clicked="(field)=>handleClick(node.id, field)" :refsObj="fieldObject"/>
+                  <template #node-customNode="{id,data}">
+                        <CustomNode :labels="data.labels" @link-clicked="(field)=>handleClick(id, field)" :refsObj="fieldObject"/>
                   </template>
                   <template #node-customTextNode="{data}">
                         <CustomTextNode :labels="data.labels"/>
