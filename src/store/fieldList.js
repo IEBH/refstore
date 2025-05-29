@@ -1,4 +1,5 @@
-const getDefaultFieldList = () => {
+import { vueFlowTable } from "../components/FlowTable";
+/*const getDefaultFieldList = () => {
   return [
     {
       fieldId: "seed-studies",
@@ -85,6 +86,10 @@ const getDefaultFieldList = () => {
       filepath: null,
     },
   ];
+};*/
+const getDefaultFieldList = () => {
+  console.log("[defaultFieldList]", vueFlowTable.value.nodes);
+  return vueFlowTable.nodes;
 };
 
 const state = {

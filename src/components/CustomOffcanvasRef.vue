@@ -9,12 +9,10 @@ const props = defineProps({
 const refFiles = ref(0);
 const emit = defineEmits(['updateRefsObj']);
 const getAllRefs = (e,f) => {
-      //TODO: foreach all refs and show details + get filepath
       refFiles.value = e.length;
       reflib.value=e;
-      //emit('updateRefs', e.length)
       emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f})
-      console.log("[fileRead refs]:", {id: props.refs.dataKey, refnum: e.length, filepath: f});
+      //console.log("[fileRead refs]:", {id: props.refs.dataKey, refnum: e.length, filepath: f});
 }
 
 //Ref-library

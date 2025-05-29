@@ -19,7 +19,7 @@ const fieldObject = reactive({
       refnum: 0
 })
 const handleClick = (fieldId, field) => {
-      console.log("fieldId:", fieldId, field);
+      //console.log("fieldId:", fieldId, field);
       fieldObject.fieldId = fieldId;
       fieldObject.dataKey = field.key;
       fieldObject.refnum = field.link;
