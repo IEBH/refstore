@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 //import './style.css'
 import App from './App.vue'
+import store from './store'
+
 const app = createApp(App);
 
 //Vue Flow
@@ -17,7 +19,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 //Sync State
-import store from './store'
 import { createSyncPlugin } from '@iebh/vuex-tera-json'
 
 const teraSyncPluginSetup = createSyncPlugin('refstore', true, {

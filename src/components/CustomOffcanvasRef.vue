@@ -8,13 +8,13 @@ const props = defineProps({
 })
 const refFiles = ref(0);
 const emit = defineEmits(['updateRefsObj']);
-const getAllRefs = (e) => {
+const getAllRefs = (e,f) => {
       //TODO: foreach all refs and show details + get filepath
       refFiles.value = e.length;
       reflib.value=e;
       //emit('updateRefs', e.length)
-      emit('updateRefsObj', {id: props.refs.id, refnum: e.length})
-      console.log("[fileRead refs]:", {id: props.refs.id, refnum: e.length});
+      emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f})
+      console.log("[fileRead refs]:", {id: props.refs.dataKey, refnum: e.length, filepath: f});
 }
 
 //Ref-library
@@ -25,7 +25,7 @@ const reflib= ref([])
       <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="myOffcanvas" aria-labelledby="offcanvasLabel" style="width: 600px;">
             <nav class="navbar bg-dark border-bottom" data-bs-theme="dark">
                   <div class="container-fluid">
-                        <h5 class="navbar-brand"> {{ refs.id }} (References) </h5>
+                        <h5 class="navbar-brand"> {{ refs.dataKey }} (References) </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
                   </div>
             </nav>

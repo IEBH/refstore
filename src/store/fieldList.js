@@ -1,129 +1,128 @@
-import { fileList } from "@primeuix/themes/aura/fileupload"
-
-const getDefaultFieldList = () => { 
-      return [
-            {
-                  fieldId: 'seed-studies',
-                  field: 'Seed Studies',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'search-results',
-                  field: 'Search Results',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'title-abs',
-                  field: 'Title/Abstract Screening',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'full-text',
-                  field: 'Full Text Screening',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'incl-studies',
-                  field: 'Included Studies',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'results-removed-2',
-                  field: 'Results Removed',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'results-removed-3',
-                  field: 'Results Removed',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'results-removed-4',
-                  field: 'Results Removed',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'results-removed-4',
-                  field: 'Reason Wrong Population',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'results-removed-4',
-                  field: 'Wrong Intervention',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'other-results-1',
-                  field: 'Other Results',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'other-results-1',
-                  field: 'Citation Searching',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'title-abs-1',
-                  field: 'Title/Abstract Screening',
-                  refs: 0,
-                  filepath: null
-      
-            },
-            {
-                  fieldId: 'full-text-1',
-                  field: 'Full Text Screening',
-                  refs: 0,
-                  filepath: null
-      
-            }
-      ]
-}
+const getDefaultFieldList = () => {
+  return [
+    {
+      fieldId: "seed-studies",
+      dataKey: "Seed Studies(Designing)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "search-results",
+      dataKey: "Search Results(Searching)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "title-abs",
+      dataKey: "Title/Abstract Screening(Searching)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "full-text",
+      dataKey: "Full Text Screening(Searching)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "incl-studies",
+      dataKey: "Included Studies(Searching)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "results-removed-2",
+      dataKey: "Search Results - Results Removed(Searching)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "results-removed-3",
+      dataKey: "Title/Abstract Screening - Results Removed(Searching)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "results-removed-4",
+      dataKey: "Full Text Screening - Results Removed(Searching)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "results-removed-4",
+      dataKey: "Full Text Screening - Wrong Population(Searching)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "results-removed-4",
+      dataKey: "Full Text Screening - Wrong Intervention(Searching)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "other-results-1",
+      dataKey: "Other Results(Other)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "other-results-1",
+      dataKey: "Citation Searching(Other)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "title-abs-1",
+      dataKey: "Title/Abstract Screening(Other)",
+      refs: 0,
+      filepath: null,
+    },
+    {
+      fieldId: "full-text-1",
+      dataKey: "Full Text Screening(Other)",
+      refs: 0,
+      filepath: null,
+    },
+  ];
+};
 
 const state = {
-      fieldList: getDefaultFieldList()
-}
+  fieldList: getDefaultFieldList(),
+};
 
 const getters = {
-      getFieldList: state => state.fieldList
-}
+  getFieldList: (state) => state.fieldList,
+};
 
 const mutations = {
-      setFilepath(state, fieldId, file, refs) {
-            const field = state.fieldList.find(field => field.fieldId === fieldId);
-            if (field) {
-                  field.refs = refs;
-                  field.filepath = file;
-            }
-      }
-}
+  //Reset all fieldList
+  reset(state) {
+    state.fieldList = getDefaultFieldList();
+    console.log("[Mutations-reset]:", state.fieldList);
+  },
+  //Set the whole fieldlist
+  setFieldList(state, fieldList) {
+    state.fieldList = fieldList;
+  },
+  //Set a filepath & reference's num into the current fieldlist state
+  setFilepath(state, { fieldId, dataKey, filepath, refnum }) {
+    const field = state.fieldList.find(
+      (field) => field.fieldId === fieldId && field.dataKey == dataKey
+    );
+    if (field) {
+      field.refs = refnum;
+      field.filepath = filepath;
+      console.log("[Mutations-setFilepath]:", state.fieldList);
+    } else {
+      console.error("Not found field!");
+    }
+  },
+};
 
 export default {
-      namespaced: true,
-      state,
-      getters,
-      mutations
-}
+  namespaced: true,
+  state,
+  getters,
+  mutations,
+};

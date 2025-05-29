@@ -20,7 +20,7 @@ const updateRefsNum = (res) => {
             <Handle type="target" position="left" id="left" />
             <div v-for="res in labels" :key="res.key">
                   <h6 v-if="res.label">{{ res.label }}</h6>
-                  <a v-if="res.key === refsObj.id" href="#refs_tab" @click.prevent="$emit('link-clicked', res)"> {{ updateRefsNum(res) }}</a>
+                  <a v-if="res.key === refsObj.dataKey" href="#refs_tab" @click.prevent="$emit('link-clicked', res)"> {{ updateRefsNum(res) }}</a>
                   <div v-else>
                         <a v-if="res.link>0" href="#refs_tab" @click.prevent="$emit('link-clicked', res)">{{ res.link }}</a>
                         <a v-if="res.link==0" href="#refs_tab" @click.prevent="$emit('link-clicked', res)">Import Files...</a>

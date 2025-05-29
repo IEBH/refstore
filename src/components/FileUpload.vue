@@ -4,10 +4,12 @@ import { ref } from 'vue';
 
 let file = ref(Object)
 let references = ref(Array)
+const filepath=ref('')
 
 const fileInputEvent = (e) => {
       console.log("[Refstore-fileUpload]:", e);
       file = e;
+      filepath.value = e.path;
 }
 
 const emit = defineEmits(['references'])
@@ -16,9 +18,9 @@ const getReferences= () => {
       Promise.resolve()
             .then(() => file.getRefs())
             .then(refs => {
-                  console.log("[Refstore-fileUpload Refs]:", refs);
+                  console.log("[Refstore-fileUpload Refs]:", refs, "FilePath:",filepath);
                   references = refs;
-                  emit("references", references)
+                  emit("references", references, filepath)
       })
 }
 </script>
