@@ -9,10 +9,10 @@ import { reactive, computed } from "vue";
 import { Offcanvas } from 'bootstrap'
 //Store
 import { useStore } from 'vuex';
+const store = useStore();
+import { getCurrentInstance } from 'vue';
+const { proxy } = getCurrentInstance();
 
-
-
-const store = useStore()
 const vueFlowTable = computed(() => {
       console.log("flowtable:", store.getters['fieldList/getFlowTable']);
       return store.getters['fieldList/getFlowTable']
@@ -48,11 +48,11 @@ const updateRefsObj = (event) => {
       fieldObject.refnum = event.refnum;
       fieldObject.filepath = event.filepath;
       console.log("[updateFieldObj]:", fieldObject);
-      
+
 }
 
 const save = () => {
-      this.$teraSync.saveState();
+      proxy.$teraSync.saveState();
 }
 
 //Reset all state of fieldList
