@@ -89,7 +89,7 @@ import { vueFlowTable } from "../components/FlowTable";
 };*/
 const getDefaultFieldList = () => {
   console.log("[defaultFieldList]", vueFlowTable.value.nodes);
-  return vueFlowTable.nodes;
+  return vueFlowTable.value.nodes;
 };
 
 const state = {
