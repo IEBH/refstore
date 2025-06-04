@@ -7,7 +7,7 @@ const props = defineProps({
 })
 
 const updateRefsNum = (res) => {
-      console.log("res:", res,"refsObj:", refsObj);
+      console.log("res:", res,"refsObj:", props.refsObj);
       res.link = props.refsObj.refnum;
       //Store set refnum
       return props.refsObj.refnum;
