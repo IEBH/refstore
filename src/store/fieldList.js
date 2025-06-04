@@ -1,3 +1,4 @@
+import { label } from "@primeuix/themes/aura/metergroup";
 import { vueFlowTable } from "../components/FlowTable";
 /*const getDefaultFieldList = () => {
   return [
@@ -123,11 +124,15 @@ const mutations = {
     console.log("state.fieldList:", state.fieldList);
     const field = state.fieldList.find(
       (field) =>
-        field.fieldId === fieldObj.fieldId && field.dataKey == fieldObj.dataKey
+        field.id === fieldObj.fieldId &&
+        field.data.labels.some((label) => label.key === fieldObj.dataKey)
     );
     if (field) {
-      field.link = fieldObj.refnum;
-      field.filepath = fieldObj.filepath;
+      const index = field.data.labels.findIndex(
+        (label) => label.key === fieldObj.dataKey
+      );
+      field.data.labels[index].link = fieldObj.refnum;
+      field.data.labels[index].filepath = fieldObj.filepath;
     } else {
       console.error("Not found this field!", {
         Id: fieldObj.fieldId,
