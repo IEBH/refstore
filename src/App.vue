@@ -13,8 +13,12 @@ import { useStore } from 'vuex';
 
 
 const store = useStore()
+const vueFlowTable = computed(() => {
+      console.log("flowtable:", store.getters['fieldList/getFlowTable']);
+      return store.getters['fieldList/getFlowTable']
+});
 
-const vueFlowTable = computed(() => { return store.getters['fieldList/getFlowTable'] });
+
 const fieldObject = reactive({
       fieldId: '',
       dataKey: '',
@@ -44,7 +48,7 @@ const updateRefsObj = (event) => {
       fieldObject.refnum = event.refnum;
       fieldObject.filepath = event.filepath;
       console.log("[updateFieldObj]:", fieldObject);
-
+      
 }
 
 const save = () => {

@@ -88,12 +88,12 @@ import { vueFlowTable } from "../components/FlowTable";
   ];
 };*/
 const getDefaultFieldList = () => {
-  console.log("[defaultFieldList]:", vueFlowTable.value.nodes);
+  //console.log("[defaultFieldList]:", vueFlowTable.value.nodes);
   return vueFlowTable.value.nodes;
 };
 
 const getFlowTable = () => {
-  console.log("[defaultFlowTable]:", vueFlowTable.value);
+  //console.log("[defaultFlowTable]:", vueFlowTable.value);
   return vueFlowTable.value;
 };
 
@@ -118,13 +118,23 @@ const mutations = {
   setFieldList(state, fieldList) {
     state.fieldList = fieldList;
   },
+  setFieldRefnum(state, { fieldId, dataKey, refnum }) {
+    const field = state.fieldList.find(
+      (field) => field.fieldId === fieldId && field.dataKey == dataKey
+    );
+    if (field) {
+      field.link = refnum;
+    } else {
+      console.error("Not found this field!", { Id: fieldId, Key: dataKey });
+    }
+  },
   //Set a filepath & reference's num into the current fieldlist state
   setFilepath(state, { fieldId, dataKey, filepath, refnum }) {
     const field = state.fieldList.find(
       (field) => field.fieldId === fieldId && field.dataKey == dataKey
     );
     if (field) {
-      field.refs = refnum;
+      field.link = refnum;
       field.filepath = filepath;
       console.log("[Mutations-setFilepath]:", state.fieldList);
     } else {
