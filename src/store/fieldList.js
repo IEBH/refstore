@@ -120,6 +120,7 @@ const mutations = {
   },
   //Set a filepath & reference's num into the current fieldlist state
   setFieldRef(state, fieldObj) {
+    console.log("state.fieldList:", state.fieldList);
     const field = state.fieldList.find(
       (field) =>
         field.fieldId === fieldObj.fieldId && field.dataKey == fieldObj.dataKey
