@@ -118,16 +118,23 @@ const mutations = {
   setFieldList(state, fieldList) {
     state.fieldList = fieldList;
   },
-  setFieldRefnum(state, { fieldId, dataKey, refnum }) {
+  //Set a filepath & reference's num into the current fieldlist state
+  setFieldRef(state, fieldObj) {
     const field = state.fieldList.find(
-      (field) => field.fieldId === fieldId && field.dataKey == dataKey
+      (field) =>
+        field.fieldId === fieldObj.fieldId && field.dataKey == fieldObj.dataKey
     );
     if (field) {
-      field.link = refnum;
+      field.link = fieldObj.refnum;
+      field.filepath = fieldObj.filepath;
     } else {
-      console.error("Not found this field!", { Id: fieldId, Key: dataKey });
+      console.error("Not found this field!", {
+        Id: fieldObj.fieldId,
+        Key: fieldObj.dataKey,
+      });
     }
   },
+
   //Set a filepath & reference's num into the current fieldlist state
   setFilepath(state, { fieldId, dataKey, filepath, refnum }) {
     const field = state.fieldList.find(

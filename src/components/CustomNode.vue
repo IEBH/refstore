@@ -1,5 +1,7 @@
 <script setup>
 import { Handle } from '@vue-flow/core'
+import { useStore } from 'vuex';
+const store = useStore()
 
 const props = defineProps({
       labels: Array,
@@ -8,8 +10,9 @@ const props = defineProps({
 
 const updateRefsNum = (res) => {
       console.log("res:", res,"refsObj:", props.refsObj);
-      res.link = props.refsObj.refnum;
+      //res.link = props.refsObj.refnum;
       //Store set refnum
+      store.commit('fieldList/setFieldRef', props.refsObj);
       return props.refsObj.refnum;
 }
 </script>
