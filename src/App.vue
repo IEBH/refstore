@@ -1,5 +1,5 @@
 <script setup>
-import { vueFlowTable } from './components/FlowTable'
+//import { vueFlowTable } from './components/FlowTable'
 import CustomNode from './components/CustomNode.vue';
 import CustomTextNode from './components/CustomTextNode.vue';
 import CustomOffcanvasRef from './components/CustomOffcanvasRef.vue';
@@ -11,7 +11,10 @@ import { Offcanvas } from 'bootstrap'
 import { useStore } from 'vuex';
 
 
+
 const store = useStore()
+
+const vueFlowTable = computed(() => { return store.getters['fieldList/getFlowTable'] });
 const fieldObject = reactive({
       fieldId: '',
       dataKey: '',
