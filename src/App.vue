@@ -100,4 +100,8 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
       <CustomOffcanvasRef :refs="fieldObject" @updateRefsObj="updateRefsObj($event)"  />
 </template>
 
-<style scoped></style>
+<style scoped>
+.card {
+      overflow-x: auto;
+}
+</style>
