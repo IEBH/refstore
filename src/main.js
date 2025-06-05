@@ -39,25 +39,24 @@ const teraSyncPluginSetup = createSyncPlugin("refstore", true, {
 const teraSyncApi = teraSyncPluginSetup(store);
 app.config.globalProperties.$teraSync = teraSyncApi;
 //Test
-//app.config.globalProperties.$tera = terafy;
+app.config.globalProperties.$tera = terafy;
 app.use(store);
 
-//Set VUE instance
 (async () => {
   try {
-    await terafy.init({ app });
-    app.use(
-      terafy.vuePlugin({
-        globalName: "$tera", // Install as vm.$tera into every component
-      })
-    );
-
     //Set Vue instance
     if (teraSyncApi && typeof teraSyncApi.setVueInstance === "function") {
       teraSyncApi.setVueInstance(app);
     } else {
       console.error("Failed to set Vue instance on TERA Sync API object.");
     }
+
+    await terafy.init({ app });
+    /*app.use(
+      terafy.vuePlugin({
+        globalName: "$tera", // Install as vm.$tera into every component
+      })
+    );*/
 
     // --- Set TERA ready ---
     if (teraSyncApi && typeof teraSyncApi.setTeraReady === "function") {
