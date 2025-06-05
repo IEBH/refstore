@@ -44,12 +44,6 @@ app.use(store);
 
 //Set VUE instance
 (async () => {
-  if (teraSyncApi && typeof teraSyncApi.setVueInstance === "function") {
-    teraSyncApi.setVueInstance(app);
-  } else {
-    console.error("Failed to set Vue instance on TERA Sync API object.");
-  }
-
   try {
     await terafy.init({ app });
     app.use(
@@ -57,6 +51,13 @@ app.use(store);
         globalName: "$tera", // Install as vm.$tera into every component
       })
     );
+
+    //Set Vue instance
+    if (teraSyncApi && typeof teraSyncApi.setVueInstance === "function") {
+      teraSyncApi.setVueInstance(app);
+    } else {
+      console.error("Failed to set Vue instance on TERA Sync API object.");
+    }
 
     // --- Set TERA ready ---
     if (teraSyncApi && typeof teraSyncApi.setTeraReady === "function") {
