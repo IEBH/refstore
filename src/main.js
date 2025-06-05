@@ -32,17 +32,14 @@ let terafy = new TeraFy()
   .setIfDev("siteUrl", "http://localhost:7334/embed")
   .use(TerafyVue); // Add the Vue plugin
 //terafy.init();
-app.use(
-  terafy.vuePlugin({
-    globalName: "$tera", // Install as vm.$tera into every component
-  })
-);
 
 const teraSyncPluginSetup = createSyncPlugin("refstore", true, {
   debounceMs: 100,
 });
 const teraSyncApi = teraSyncPluginSetup(store);
 app.config.globalProperties.$teraSync = teraSyncApi;
+//Test
+//app.config.globalProperties.$tera = terafy;
 app.use(store);
 
 //Set VUE instance
@@ -55,6 +52,11 @@ app.use(store);
 
   try {
     await terafy.init({ app });
+    app.use(
+      terafy.vuePlugin({
+        globalName: "$tera", // Install as vm.$tera into every component
+      })
+    );
 
     // --- Set TERA ready ---
     if (teraSyncApi && typeof teraSyncApi.setTeraReady === "function") {
