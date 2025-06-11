@@ -16,7 +16,12 @@ const getAllRefs = (e,f) => {
 }
 
 //Ref-library
-const reflib= ref([])
+//const reflib= ref([])
+const reflib = computed(() => {
+      const filepath = props.refs.filepath
+      console.log("test filepath:", filepath);
+      return []
+})
 
 </script>
 <template>
