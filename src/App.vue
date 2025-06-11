@@ -30,6 +30,7 @@ const handleClick = (fieldId, field) => {
       fieldObject.fieldId = fieldId;
       fieldObject.dataKey = field.key;
       fieldObject.refnum = field.link;
+      fieldObject.filepath=field.filepath
       const el = document.getElementById('myOffcanvas')
       if (el) {
             const refTab = new Offcanvas(el);
