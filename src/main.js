@@ -47,14 +47,16 @@ app.use(store);
         globalName: "$tera", // Install as vm.$tera into every component
       })
     );
+
+    //Init terafy
+    await terafy.init({ app });
+
     //Set Vue instance
     if (teraSyncApi && typeof teraSyncApi.setVueInstance === "function") {
       teraSyncApi.setVueInstance(app);
     } else {
       console.error("Failed to set Vue instance on TERA Sync API object.");
     }
-
-    await terafy.init({ app });
 
     // --- Set TERA ready ---
     if (teraSyncApi && typeof teraSyncApi.setTeraReady === "function") {
