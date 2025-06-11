@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@iebh/tera-fy": "^2.2.0",
+    "@iebh/tera-fy": "^2.2.8",
     "@iebh/vuex-tera-json": "^2.1.5",
     "@primeuix/themes": "^1.0.1",
     "@vue-flow/core": "^1.43.1",

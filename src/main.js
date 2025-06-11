@@ -54,6 +54,7 @@ app.use(store);
     //Set Vue instance
     if (teraSyncApi && typeof teraSyncApi.setVueInstance === "function") {
       teraSyncApi.setVueInstance(app);
+      console.log("test1:", app, "teraSyncApi", teraSyncApi);
     } else {
       console.error("Failed to set Vue instance on TERA Sync API object.");
     }
