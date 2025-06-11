@@ -24,7 +24,8 @@ const getters = {
 const mutations = {
   //Reset all fieldList
   reset(state) {
-    state.fieldList = getDefaultFieldList();
+            state.fieldList = getDefaultFieldList();
+            state.flowTable = getFlowTable();
     console.log("[Mutations-reset-fieldList]:", state.fieldList);
     console.log("[Mutations-reset-flowTable]:", state.flowTable);
   },
