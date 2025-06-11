@@ -27,11 +27,14 @@ const getReferences= (f) => {
 
 onMounted(() => {
       const f = props.refs.filepath
+      console.log("onMounted:", props.refs.filepath)
       if (f) {
             getReferences(f).then(refs => {
                   console.log("onMounted-refs", refs);
                   reflib.value = refs
            })
+      } else {
+            reflib.value=[]
       }
 })
 
