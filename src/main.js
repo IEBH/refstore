@@ -3,8 +3,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store'
 import { createSyncPlugin } from "@iebh/vuex-tera-json";
+import { getCurrentInstance } from "vue";
 
 const app = createApp(App);
+const instance = getCurrentInstance();
 
 //Vue Flow
 import "@vue-flow/core/dist/style.css";
@@ -53,7 +55,7 @@ app.use(store);
 
     //Set Vue instance
     if (teraSyncApi && typeof teraSyncApi.setVueInstance === "function") {
-      teraSyncApi.setVueInstance(app);
+      teraSyncApi.setVueInstance(instance.proxy);
       console.log("test1:", app, "teraSyncApi", teraSyncApi);
     } else {
       console.error("Failed to set Vue instance on TERA Sync API object.");
