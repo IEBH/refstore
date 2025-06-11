@@ -1,7 +1,7 @@
 <script setup>
 import FileUpload from './FileUpload.vue';
 import LibraryRef from './LibraryRef.vue';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 const props = defineProps({
       refs: Object,
       //offcanvasID: String
