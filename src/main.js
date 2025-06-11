@@ -31,7 +31,6 @@ let terafy = new TeraFy()
   .set("devMode", import.meta.env.DEV) // TeraFy should be chatty and use all `setIfDev` settings
   .setIfDev("siteUrl", "http://localhost:7334/embed")
   .use(TerafyVue); // Add the Vue plugin
-//terafy.init();
 
 const teraSyncPluginSetup = createSyncPlugin("refstore", true, {
   debounceMs: 100,
@@ -51,6 +50,7 @@ app.use(store);
     //Init terafy
     await terafy.init({ app });
 
+    //Make the vueInstance.$tera works
     const teraProxy = {
       get $tera() {
         return app.config.globalProperties.$tera;
@@ -60,7 +60,7 @@ app.use(store);
     //Set Vue instance
     if (teraSyncApi && typeof teraSyncApi.setVueInstance === "function") {
       teraSyncApi.setVueInstance(teraProxy);
-      console.log("test1:", teraProxy, "teraSyncApi", teraSyncApi);
+      console.log("teraProxy:", teraProxy, "teraSyncApi", teraSyncApi);
     } else {
       console.error("Failed to set Vue instance on TERA Sync API object.");
     }
