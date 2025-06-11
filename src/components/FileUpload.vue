@@ -20,7 +20,7 @@ const getReferences= () => {
             .then(refs => {
                   console.log("[Refstore-fileUpload Refs]:", refs, "FilePath:",filepath);
                   references = refs;
-                  emit("references", references, filepath)
+                  emit("references", references, file)
       })
 }
 </script>
