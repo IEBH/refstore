@@ -20,20 +20,27 @@ const getAllRefs = (e,f) => {
 const reflib = ref([])
 
 //Get all refs if default filepath not Null
-const getReferences= (f) => {
+/*const getReferences= (f) => {
       return Promise.resolve()
             .then(() => f.getRefs())
-}
+}*/
+const getReferences = (file) => file.getRefs();
 
 const $tera = useTera();
 watch(() => props.refs.filepath, (newVal) => {
-      console.log("watch-refs:", props.refs.filepath, "new:", $tera.getProjectFile(props.refs.filepath.path))
-      $tera.getProjectFile(props.refs.filepath.path).then(f =>{console.log("new:", f)})
-      if (newVal && typeof newVal.getRefs === 'function') {
-            getReferences(newVal).then((refs) => {
+      //console.log("watch-refs:", props.refs.filepath, "new:", $tera.getProjectFile(props.refs.filepath.path))
+      //$tera.getProjectFile(props.refs.filepath.path).then(f =>{console.log("new:", f)})
+      if (newVal) {
+            $tera.getProjectFile(newVal.filepath.path)
+                  .then(file => getReferences(file))
+                  .then((refs) => {
+                        console.log("watch-refs:", refs)
+                        reflib.value = refs;
+            })
+            /*getReferences(newVal).then((refs) => {
                   console.log("watch-refs:", refs)
                   reflib.value = refs;
-            })
+            })*/
       } else {
             console.warn("filepath is not valid or missing getRefs:", newVal);
       }
