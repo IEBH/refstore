@@ -19,7 +19,7 @@ const getAllRefs = (e,f) => {
 //Ref-library
 const reflib = ref([])
 
-//Get all refs if default filepath not Null
+//Get all refs 
 const getReferences = (file) => file.getRefs();
 
 const $tera = useTera();
