@@ -1,7 +1,8 @@
 <script setup>
 import FileUpload from './FileUpload.vue';
 import LibraryRef from './LibraryRef.vue';
-import { ref, watch,getCurrentInstance  } from 'vue';
+import { ref, watch} from 'vue';
+import { useTera } from '../composables/useTerafy';
 const props = defineProps({
       refs: Object,
       //offcanvasID: String
@@ -24,9 +25,9 @@ const getReferences= (f) => {
             .then(() => f.getRefs())
 }
 
-const proxy = getCurrentInstance();
+const $tera = useTera();
 watch(() => props.refs.filepath, (newVal) => {
-      console.log("watch-refs:", props.refs.filepath, "new:", proxy.$tera)
+      console.log("watch-refs:", props.refs.filepath, "new:", $tera)
       if (newVal && typeof newVal.getRefs === 'function') {
             getReferences(newVal).then((refs) => {
                   console.log("watch-refs:", refs)
