@@ -12,7 +12,7 @@ const emit = defineEmits(['updateRefsObj']);
 const getAllRefs = (e,f) => {
       refFiles.value = e.length;
       reflib.value = e;
-      emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f})
+      emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f.path})
       //console.log("[fileRead refs]:", {id: props.refs.dataKey, refnum: e.length, filepath: f});
 }
 
@@ -20,27 +20,18 @@ const getAllRefs = (e,f) => {
 const reflib = ref([])
 
 //Get all refs if default filepath not Null
-/*const getReferences= (f) => {
-      return Promise.resolve()
-            .then(() => f.getRefs())
-}*/
 const getReferences = (file) => file.getRefs();
 
 const $tera = useTera();
 watch(() => props.refs.filepath, (newVal) => {
-      //console.log("watch-refs:", props.refs.filepath, "new:", $tera.getProjectFile(props.refs.filepath.path))
       //$tera.getProjectFile(props.refs.filepath.path).then(f =>{console.log("new:", f)})
       if (newVal) {
-            $tera.getProjectFile(newVal.path)
+            $tera.getProjectFile(newVal)
                   .then(file => getReferences(file))
                   .then((refs) => {
-                        console.log("watch-refs:", refs)
+                        //console.log("watch-refs:", refs)
                         reflib.value = refs;
             })
-            /*getReferences(newVal).then((refs) => {
-                  console.log("watch-refs:", refs)
-                  reflib.value = refs;
-            })*/
       } else {
             console.warn("filepath is not valid or missing getRefs:", newVal);
       }
