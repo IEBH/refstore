@@ -26,6 +26,7 @@ const getReferences= (f) => {
 
 watch(() => props.refs.filepath, (newVal) => {
       if (newVal) {
+            console.log("watch-refs:", props.refs.filepath, "new:", newVal)
             getReferences(newVal).then((refs) => {
                   console.log("watch-refs:", refs)
                   reflib.value = refs;
