@@ -1,7 +1,7 @@
 <script setup>
 import FileUpload from './FileUpload.vue';
 import LibraryRef from './LibraryRef.vue';
-import { ref, watch  } from 'vue';
+import { ref, watch,getCurrentInstance  } from 'vue';
 const props = defineProps({
       refs: Object,
       //offcanvasID: String
@@ -24,8 +24,9 @@ const getReferences= (f) => {
             .then(() => f.getRefs())
 }
 
+const proxy = getCurrentInstance();
 watch(() => props.refs.filepath, (newVal) => {
-      console.log("watch-refs:", props.refs.filepath, "new:", this.$tera.setProjectFileContents(props.refs.filepath))
+      console.log("watch-refs:", props.refs.filepath, "new:", proxy.$tera.setProjectFileContents(props.refs.filepath))
       if (newVal && typeof newVal.getRefs === 'function') {
             getReferences(newVal).then((refs) => {
                   console.log("watch-refs:", refs)
