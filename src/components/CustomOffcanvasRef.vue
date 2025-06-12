@@ -11,7 +11,9 @@ const emit = defineEmits(['updateRefsObj']);
 const getAllRefs = (e,f) => {
       refFiles.value = e.length;
       reflib.value = e;
-      console.log("getContents:", f.getContents())
+      getCon(f).then(contents => {
+            console.log("getContents:", contents)
+      })
       emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f})
       //console.log("[fileRead refs]:", {id: props.refs.dataKey, refnum: e.length, filepath: f});
 }
@@ -19,6 +21,9 @@ const getAllRefs = (e,f) => {
 //Ref-library
 const reflib = ref([])
 
+const getCon = (f) => {
+      return Promise.resolve().then(() => f.getContents());
+}
 //Get all refs if default filepath not Null
 const getReferences= (f) => {
       return Promise.resolve()
