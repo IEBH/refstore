@@ -1,7 +1,7 @@
 <script setup>
 import FileUpload from './FileUpload.vue';
 import LibraryRef from './LibraryRef.vue';
-import { ref, onMounted } from 'vue';
+import { ref, watch  } from 'vue';
 const props = defineProps({
       refs: Object,
       //offcanvasID: String
@@ -22,22 +22,18 @@ const reflib = ref([])
 const getReferences= (f) => {
       return Promise.resolve()
             .then(() => f.getRefs())
-            .then(refs => refs)
 }
 
-onMounted(() => {
-      const f = props.refs.filepath
-      console.log("onMounted:", props.refs.filepath)
-      if (f) {
-            getReferences(f).then(refs => {
-                  console.log("onMounted-refs", refs);
-                  reflib.value = refs
-           })
-      } else {
-            reflib.value=[]
+watch(() => props.refs.filepath, (newVal) => {
+      if (newVal) {
+            getReferences(newVal).then((refs) => {
+                  console.log("watch-refs:", refs)
+                  reflib.value = refs;
+            })
       }
-})
-
+},
+      {immediate: true}
+)
 //TODO: if re-uploaded supported, add Watch()
 
 </script>
