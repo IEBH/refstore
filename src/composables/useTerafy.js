@@ -2,13 +2,7 @@ import { getCurrentInstance} from 'vue';
 
 
 
-export default {
-      methods: {
-            useTera(){
-                  const instance = getCurrentInstance(); 
-                  return instance?.proxy?.$tera;
-            } 
-
-            
-      }
+export function useTera() {
+  const instance = getCurrentInstance();
+  return instance?.proxy?.$tera;
 }
