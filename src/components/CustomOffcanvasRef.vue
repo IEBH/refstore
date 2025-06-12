@@ -25,8 +25,8 @@ const getReferences= (f) => {
 }
 
 watch(() => props.refs.filepath, (newVal) => {
+      console.log("watch-refs:", props.refs.filepath, "new:", this.$tera.setProjectFileContents(props.refs.filepath))
       if (newVal && typeof newVal.getRefs === 'function') {
-            console.log("watch-refs:", props.refs.filepath, "new:", this.$tera.setProjectFileContents(props.refs.filepath))
             getReferences(newVal).then((refs) => {
                   console.log("watch-refs:", refs)
                   reflib.value = refs;
