@@ -31,7 +31,7 @@ watch(() => props.refs.filepath, (newVal) => {
       //console.log("watch-refs:", props.refs.filepath, "new:", $tera.getProjectFile(props.refs.filepath.path))
       //$tera.getProjectFile(props.refs.filepath.path).then(f =>{console.log("new:", f)})
       if (newVal) {
-            $tera.getProjectFile(newVal.filepath.path)
+            $tera.getProjectFile(newVal.path)
                   .then(file => getReferences(file))
                   .then((refs) => {
                         console.log("watch-refs:", refs)
