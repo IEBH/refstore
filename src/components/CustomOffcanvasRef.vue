@@ -11,9 +11,6 @@ const emit = defineEmits(['updateRefsObj']);
 const getAllRefs = (e,f) => {
       refFiles.value = e.length;
       reflib.value = e;
-      getCon(f).then(contents => {
-            console.log("getContents:", contents)
-      })
       emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f})
       //console.log("[fileRead refs]:", {id: props.refs.dataKey, refnum: e.length, filepath: f});
 }
@@ -21,9 +18,6 @@ const getAllRefs = (e,f) => {
 //Ref-library
 const reflib = ref([])
 
-const getCon = (f) => {
-      return Promise.resolve().then(() => f.getContents());
-}
 //Get all refs if default filepath not Null
 const getReferences= (f) => {
       return Promise.resolve()
@@ -32,7 +26,7 @@ const getReferences= (f) => {
 
 watch(() => props.refs.filepath, (newVal) => {
       if (newVal && typeof newVal.getRefs === 'function') {
-            console.log("watch-refs:", props.refs.filepath, "new:", typeof newVal.getRefs)
+            console.log("watch-refs:", props.refs.filepath, "new:", this.$tera.setProjectFileContents(props.refs.filepath))
             getReferences(newVal).then((refs) => {
                   console.log("watch-refs:", refs)
                   reflib.value = refs;
