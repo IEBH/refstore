@@ -25,12 +25,14 @@ const getReferences= (f) => {
 }
 
 watch(() => props.refs.filepath, (newVal) => {
-      if (newVal) {
-            console.log("watch-refs:", props.refs.filepath, "new:", newVal)
+      if (newVal && typeof newVal.getRefs === 'function') {
+            console.log("watch-refs:", props.refs.filepath, "new:", typeof newVal.getRefs)
             getReferences(newVal).then((refs) => {
                   console.log("watch-refs:", refs)
                   reflib.value = refs;
             })
+      } else {
+            console.warn("filepath is not valid or missing getRefs:", newVal);
       }
 },
       {immediate: true}
