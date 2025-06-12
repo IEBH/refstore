@@ -26,7 +26,7 @@ const getReferences= (f) => {
 
 const proxy = getCurrentInstance();
 watch(() => props.refs.filepath, (newVal) => {
-      console.log("watch-refs:", props.refs.filepath, "new:", proxy.$tera.setProjectFileContents(props.refs.filepath))
+      console.log("watch-refs:", props.refs.filepath, "new:", proxy.$tera)
       if (newVal && typeof newVal.getRefs === 'function') {
             getReferences(newVal).then((refs) => {
                   console.log("watch-refs:", refs)
