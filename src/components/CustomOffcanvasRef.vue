@@ -27,8 +27,8 @@ const getReferences= (f) => {
 
 const $tera = useTera();
 watch(() => props.refs.filepath, (newVal) => {
-      console.log("watch-refs:", props.refs.filepath)
-      $tera.getProjectFile(props.refs.filepath.id).then(f =>{console.log("new:", f)})
+      console.log("watch-refs:", props.refs.filepath, "new:", $tera.getProjectFile(props.refs.filepath.path))
+      $tera.getProjectFile(props.refs.filepath.path).then(f =>{console.log("new:", f)})
       if (newVal && typeof newVal.getRefs === 'function') {
             getReferences(newVal).then((refs) => {
                   console.log("watch-refs:", refs)
