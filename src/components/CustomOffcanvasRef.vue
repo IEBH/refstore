@@ -13,7 +13,7 @@ const getAllRefs = (e,f) => {
       refFiles.value = e.length;
       reflib.value = e;
       console.log("file:", f, "file.path:", f.path);
-      emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f})
+      emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f.path})
       //console.log("[fileRead refs]:", {id: props.refs.dataKey, refnum: e.length, filepath: f});
 }
 
@@ -27,7 +27,7 @@ const $tera = useTera();
 watch(() => props.refs.filepath, (newVal) => {
       //$tera.getProjectFile(props.refs.filepath.path).then(f =>{console.log("new:", f)})
       if (newVal) {
-            $tera.getProjectFile(newVal.path)
+            $tera.getProjectFile(newVal)
                   .then(file => getReferences(file))
                   .then((refs) => {
                         //console.log("watch-refs:", refs)
