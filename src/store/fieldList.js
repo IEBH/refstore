@@ -1,4 +1,4 @@
-import { vueFlowTable } from "../components/FlowTable";
+import { vueFlowTable } from "../FlowTable";
 
 const getFlowTable = () => {
   return vueFlowTable.value;

@@ -18,7 +18,7 @@ const getReferences= () => {
       Promise.resolve()
             .then(() => file.getRefs())
             .then(refs => {
-                  console.log("[Refstore-fileUpload Refs]:", refs, "FilePath:",filepath);
+                  //console.log("[Refstore-fileUpload Refs]:", refs, "FilePath:",filepath);
                   references = refs;
                   emit("references", references, file)
       })

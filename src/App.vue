@@ -1,20 +1,17 @@
 <script setup>
-//import { vueFlowTable } from './components/FlowTable'
 import CustomNode from './components/CustomNode.vue';
 import CustomTextNode from './components/CustomTextNode.vue';
 import CustomOffcanvasRef from './components/CustomOffcanvasRef.vue';
 
 import { VueFlow } from '@vue-flow/core';
-import { reactive, computed } from "vue";
+import { reactive, computed, getCurrentInstance } from "vue";
 import { Offcanvas } from 'bootstrap'
 //Store
 import { useStore } from 'vuex';
 const store = useStore();
-import { getCurrentInstance } from 'vue';
 const { proxy } = getCurrentInstance();
 
 const vueFlowTable = computed(() => {
-      console.log("flowtable:", store.getters['fieldList/getFlowTable']);
       return store.getters['fieldList/getFlowTable']
 });
 
@@ -26,11 +23,10 @@ const fieldObject = reactive({
       refnum: 0
 })
 const handleClick = (fieldId, field) => {
-      //console.log("fieldId:", fieldId, field);
       fieldObject.fieldId = fieldId;
       fieldObject.dataKey = field.key;
       fieldObject.refnum = field.link;
-      fieldObject.filepath=field.filepath
+      fieldObject.filepath = field.filepath;
       const el = document.getElementById('myOffcanvas')
       if (el) {
             const refTab = new Offcanvas(el);

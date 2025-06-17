@@ -5,16 +5,13 @@ import { ref, watch} from 'vue';
 import { useTera } from '../composables/useTerafy';
 const props = defineProps({
       refs: Object,
-      //offcanvasID: String
 })
 const refFiles = ref(0);
 const emit = defineEmits(['updateRefsObj']);
 const getAllRefs = (e,f) => {
       refFiles.value = e.length;
       reflib.value = e;
-      console.log("file:", f, "file.path:", f.path);
       emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f.path})
-      //console.log("[fileRead refs]:", {id: props.refs.dataKey, refnum: e.length, filepath: f});
 }
 
 //Ref-library
@@ -23,23 +20,20 @@ const reflib = ref([])
 //Get all refs 
 const getReferences = (file) => file.getRefs();
 
-const $tera = useTera();
+const $tera = useTera();  //filepath => file.path (filename)
 watch(() => props.refs.filepath, (newVal) => {
-      //$tera.getProjectFile(props.refs.filepath.path).then(f =>{console.log("new:", f)})
       if (newVal) {
             $tera.getProjectFile(newVal)
                   .then(file => getReferences(file))
                   .then((refs) => {
-                        //console.log("watch-refs:", refs)
                         reflib.value = refs;
             })
       } else {
             console.warn("filepath is not valid or missing getRefs:", newVal);
       }
 },
-      {immediate: true}
+     // {immediate: true}
 )
-//TODO: if re-uploaded supported, add Watch()
 
 </script>
 <template>
@@ -50,10 +44,6 @@ watch(() => props.refs.filepath, (newVal) => {
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
                   </div>
             </nav>
-            <!--<div class="offcanvas-header">
-                  <h5 class="offcanvas-title"> References </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
-            </div>-->
             <div class="offcanvas-body">
                   <FileUpload v-if="refs.refnum == 0" @references="getAllRefs" />
                   <LibraryRef v-if="refs.refnum>0" :reflib="reflib" />
