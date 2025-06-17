@@ -12,6 +12,7 @@ const emit = defineEmits(['updateRefsObj']);
 const getAllRefs = (e,f) => {
       refFiles.value = e.length;
       reflib.value = e;
+      console.log("file:", f, "file.path:", f.path);
       emit('updateRefsObj', {id: props.refs.dataKey, refnum: e.length, filepath: f})
       //console.log("[fileRead refs]:", {id: props.refs.dataKey, refnum: e.length, filepath: f});
 }
