@@ -76,7 +76,7 @@ const vueFlowTable = ref({
       id: "search-results",
       type: "customNode",
       position: {
-        x: 650,
+        x: 600,
         y: 160,
       },
       data: {
@@ -94,7 +94,7 @@ const vueFlowTable = ref({
       id: "title-abs",
       type: "customNode",
       position: {
-        x: 627,
+        x: 577,
         y: 326,
       },
       data: {
@@ -112,7 +112,7 @@ const vueFlowTable = ref({
       id: "full-text",
       type: "customNode",
       position: {
-        x: 647,
+        x: 597,
         y: 480,
       },
       data: {
@@ -130,7 +130,7 @@ const vueFlowTable = ref({
       id: "incl-studies",
       type: "customNode",
       position: {
-        x: 651,
+        x: 601,
         y: 600,
       },
       data: {
@@ -148,7 +148,7 @@ const vueFlowTable = ref({
       id: "results-removed-2",
       type: "customNode",
       position: {
-        x: 1100,
+        x: 1080,
         y: 160,
       },
       data: {
@@ -166,7 +166,7 @@ const vueFlowTable = ref({
       id: "results-removed-3",
       type: "customNode",
       position: {
-        x: 1100,
+        x: 1080,
         y: 326,
       },
       data: {
@@ -184,7 +184,7 @@ const vueFlowTable = ref({
       id: "results-removed-4",
       type: "customNode",
       position: {
-        x: 1070,
+        x: 1050,
         y: 429,
       },
       data: {
