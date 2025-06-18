@@ -27,7 +27,7 @@ onMounted(() => {
                                     <span v-for="author in (ref.authors || []).slice(0,3)" :key="author" class="bg-secondary text-white rounded px-2 py-1 small me-1 mb-1 d-inline-block"><i class="bi bi-person-fill"></i>{{ author }}</span>
                                     <span 
                                         v-if="(ref.authors || []).length>3" 
-                                        ::data-bs-title="(ref.authors || []).slice(3).join('\n')"
+                                        :title="(ref.authors || []).slice(3).join('\n')"
                                         data-bs-toggle="tooltip"
                                         data-bs-html="true"
                                         class="bg-body-secondary text-dark rounded px-2 py-1 small me-1 mb-1 d-inline-block"
