@@ -306,6 +306,11 @@ const vueFlowTable = ref({
       sourceHandle: "right",
       targetHandle: "left",
       label: "Deduplicator",
+      labelStyle: {
+        fill: "#48D1CC",
+        fontWeight: "bold",
+        fontSize: 14,
+      },
       data: {
         //linkLabel: 'Deduplicator',
         isLink: true,
@@ -320,6 +325,11 @@ const vueFlowTable = ref({
       sourceHandle: "right",
       targetHandle: "left",
       label: "Screenatron",
+      labelStyle: {
+        fill: "#48D1CC",
+        fontWeight: "bold",
+        fontSize: 14,
+      },
       data: {
         //linkLabel: 'Screenatron',
         linkUrl: "https://tera-tools.com/screenatron",
@@ -333,6 +343,11 @@ const vueFlowTable = ref({
       sourceHandle: "right",
       targetHandle: "left",
       label: "Screenatron",
+      labelStyle: {
+        fill: "#48D1CC",
+        fontWeight: "bold",
+        fontSize: 14,
+      },
       data: {
         //linkLabel: 'Screenatron',
         linkUrl: "https://tera-tools.com/screenatron",
@@ -370,6 +385,11 @@ const vueFlowTable = ref({
       sourceHandle: "bottom",
       targetHandle: "right",
       label: "SpiderCite",
+      labelStyle: {
+        fill: "#48D1CC",
+        fontWeight: "bold",
+        fontSize: 14,
+      },
       data: {
         //linkLabel: 'SpiderCite',
         linkUrl: "https://tera-tools.com/spidercite",

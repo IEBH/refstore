@@ -20,9 +20,16 @@ function handleClick(link) {
       </div>
 </template>
 <style scoped>
+
 .clickable {
   color: rgb(154, 154, 204);
-  text-decoration: underline;
+  font-weight: 500;
   cursor: pointer;
+  transition: color 0.3s;
+}
+
+.clickable:hover {
+  color: rgb(82, 82, 163);
+  text-decoration: underline;
 }
 </style>
