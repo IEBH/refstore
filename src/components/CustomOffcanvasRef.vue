@@ -48,7 +48,7 @@ watch(() => props.refs.filepath, (newVal) => {
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
                   </div>
             </nav>
-            <a class="btn btn-secondary" role="button" @click="toolVisible= true"><i class="bi bi-cloud-arrow-up fs-5 me-2"></i> Re-Upload File</a>
+            <a v-if="refs.refnum>0" class="btn btn-secondary" role="button" @click="toolVisible= true"><i class="bi bi-cloud-arrow-up fs-5 me-2"></i> Re-Upload File</a>
             <!--<div v-if="toolbarVisible==true">
                   <ul class="nav justify-content-end bg-secondary p-2">
                         <li class="nav-item">
