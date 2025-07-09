@@ -113,7 +113,7 @@ const vueFlowTable = ref({
       type: "customNode",
       position: {
         x: 597,
-        y: 480,
+        y: 495,
       },
       data: {
         labels: [
@@ -184,7 +184,7 @@ const vueFlowTable = ref({
       id: "results-removed-4",
       type: "customNode",
       position: {
-        x: 1050,
+        x: 1070,
         y: 429,
       },
       data: {
@@ -196,8 +196,12 @@ const vueFlowTable = ref({
             filepath: null,
           },
           {
+            key: "Subtitle",
+            label: "Reason",
+          },
+          {
             key: "Full Text Screening - Wrong Population(Searching)",
-            label: "Reason Wrong Population",
+            label: "Wrong Population",
             link: 0,
             filepath: null,
           },
