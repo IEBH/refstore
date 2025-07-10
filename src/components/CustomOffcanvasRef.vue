@@ -48,15 +48,11 @@ watch(() => props.refs.filepath, (newVal) => {
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" />
                   </div>
             </nav>
-            <a v-if="refs.refnum>0" class="btn btn-secondary" role="button" @click="toolVisible= true"><i class="bi bi-cloud-arrow-up fs-5 me-2"></i> Re-Upload File</a>
-            <!--<div v-if="toolbarVisible==true">
-                  <ul class="nav justify-content-end bg-secondary p-2">
-                        <li class="nav-item">
-                              <button type="button" class="btn btn-secondary" ><i class="bi bi-cloud-arrow-up fs-5"></i></button>
-                        </li>
-                  </ul>
-            </div>-->
-            
+            <!--<a v-if="refs.refnum>0" class="btn btn-secondary" role="button" @click="toolVisible= true"><i class="bi bi-cloud-arrow-up fs-5 me-2"></i> Re-Upload File</a>-->
+            <a v-if="refs.refnum>0" :class="toolVisible? 'btn btn-warning':'btn btn-secondary'" role="button" @click="toolVisible= !toolVisible">
+                  <i :class="toolVisible? 'bi bi-x-circle fs-5 me-2' : 'bi bi-cloud-arrow-up fs-5 me-2'"></i> 
+                  {{toolVisible? 'Hide Re-Upload File' : 'Re-Upload File'}}
+            </a>
             
             <div class="offcanvas-body">
                   <FileUpload v-if="refs.refnum == 0 || toolVisible==true" @references="getAllRefs" />
@@ -66,6 +62,15 @@ watch(() => props.refs.filepath, (newVal) => {
 </template>
 <style scoped>
 .btn-secondary{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 1.6rem; 
+      border-radius: 0rem;
+      margin-top: -1px;
+}
+
+.btn-warning{
       display: inline-flex;
       align-items: center;
       justify-content: center;
