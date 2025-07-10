@@ -154,7 +154,7 @@ const vueFlowTable = ref({
       data: {
         labels: [
           {
-            key: "Search Results - Results Removed(Searching)",
+            key: "Search Results - Results Removed",
             label: "Results Removed",
             link: 0,
             filepath: null,
@@ -172,7 +172,7 @@ const vueFlowTable = ref({
       data: {
         labels: [
           {
-            key: "Title/Abstract Screening - Results Removed(Searching)",
+            key: "Title/Abstract Screening - Results Removed",
             label: "Results Removed",
             link: 0,
             filepath: null,
@@ -190,7 +190,7 @@ const vueFlowTable = ref({
       data: {
         labels: [
           {
-            key: "Full Text Screening - Results Removed(Searching)",
+            key: "Full Text Screening - Results Removed",
             label: "Results Removed",
             link: 0,
             filepath: null,
@@ -200,13 +200,13 @@ const vueFlowTable = ref({
             label: "Reason",
           },
           {
-            key: "Full Text Screening - Wrong Population(Searching)",
+            key: "Full Text Screening - Wrong Population",
             label: "Wrong Population",
             link: 0,
             filepath: null,
           },
           {
-            key: "Full Text Screening - Wrong Intervention(Searching)",
+            key: "Full Text Screening - Wrong Intervention",
             label: "Wrong Intervention",
             link: 0,
             filepath: null,
