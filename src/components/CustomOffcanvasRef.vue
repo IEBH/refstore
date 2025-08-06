@@ -18,6 +18,8 @@ const toolVisible = ref(false);
 
 //Ref-library
 const reflib = ref([])
+//Is file missing
+const isFileMissing = ref(false)
 
 //Get all refs 
 //const getReferences = (file) => file.getRefs();
@@ -36,9 +38,16 @@ watch(() => props.refs.filepath, (newVal) => {
                   .then(file => getReferences(file))
                   .then((refs) => {
                         console.log("refs:", refs);
-                        reflib.value = refs;
-                        //Hide FileUpload 
-                        toolVisible.value = false;
+                        if (refs.length > 0) {
+                              reflib.value = refs;
+
+                              isFileMissing.value = false;
+                              //Hide FileUpload
+                              toolVisible.value = false;
+                        } else {
+                              isFileMissing.value = true;
+                        }
+                       
             })
       } else {
             console.warn("filepath is not valid or missing getRefs:", newVal);
@@ -65,6 +74,7 @@ watch(() => props.refs.filepath, (newVal) => {
             <div class="offcanvas-body">
                   <FileUpload v-if="refs.refnum == 0 || toolVisible==true" @references="getAllRefs" />
                   <LibraryRef v-if="refs.refnum>0" :reflib="reflib" />
+                  <div v-if="isFileMissing" class="alert alert-warning" role="alert">The uploaded file missing!</div>
             </div>
       </div>
 </template>
