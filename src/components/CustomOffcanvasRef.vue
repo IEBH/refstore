@@ -20,7 +20,14 @@ const toolVisible = ref(false);
 const reflib = ref([])
 
 //Get all refs 
-const getReferences = (file) => file.getRefs();
+//const getReferences = (file) => file.getRefs();
+const getReferences = async (file) => {
+      if (!file || typeof file.getRefs !== 'function') {
+            console.warn('Invalid file or missing getRefs method:', file);
+            return [];
+      }
+      return await file.getRefs();
+}
 
 const $tera = useTera();  //filepath => file.path (filename)
 watch(() => props.refs.filepath, (newVal) => {
@@ -28,6 +35,7 @@ watch(() => props.refs.filepath, (newVal) => {
             $tera.getProjectFile(newVal)
                   .then(file => getReferences(file))
                   .then((refs) => {
+                        console.log("refs:", refs);
                         reflib.value = refs;
                         //Hide FileUpload 
                         toolVisible.value = false;
