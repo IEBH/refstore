@@ -38,9 +38,8 @@ watch(() => props.refs.filepath, (newVal) => {
                   .then(file => getReferences(file))
                   .then((refs) => {
                         console.log("refs:", refs, "filepath:", props.refs.filepath);
+                        reflib.value = refs;
                         if (refs.length > 0) {
-                              reflib.value = refs;
-
                               isFileMissing.value = false;
                               //Hide FileUpload
                               toolVisible.value = false;
