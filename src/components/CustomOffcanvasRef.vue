@@ -73,7 +73,10 @@ watch(() => props.refs.filepath, (newVal) => {
             <div class="offcanvas-body">
                   <FileUpload v-if="refs.refnum == 0 || toolVisible==true" @references="getAllRefs" />
                   <LibraryRef v-if="refs.refnum>0" :reflib="reflib" />
-                  <div v-if="refs.filepath && isFileMissing" class="alert alert-warning" role="alert">The uploaded file missing...Please check your project files in TERA or Re-Upload File!</div>
+                  <div v-if="refs.filepath && isFileMissing" class="alert alert-warning" role="alert">The uploaded file missing...Please check your
+                         <a href="https://tera-tools.com/project/files" target="_blank" class="alert-link">project files</a>
+                         in TERA or <strong>Re-Upload File!</strong>
+                  </div>
             </div>
       </div>
 </template>
