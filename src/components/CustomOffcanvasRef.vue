@@ -71,6 +71,7 @@ watch(() => props.refs.filepath, (newVal) => {
             </a>
             
             <div class="offcanvas-body">
+                  <div class="alert alert-warning" role="alert">{{ refs }}</div>
                   <FileUpload v-if="refs.refnum == 0 || toolVisible==true" @references="getAllRefs" />
                   <LibraryRef v-if="refs.refnum>0" :reflib="reflib" />
                   <div v-if="refs.filepath && isFileMissing" class="alert alert-warning" role="alert">The uploaded file missing...Please check your
