@@ -37,7 +37,6 @@ watch(() => props.refs.filepath, (newVal) => {
             $tera.getProjectFile(newVal)
                   .then(file => getReferences(file))
                   .then((refs) => {
-                        console.log("refs:", refs, "filepath:", props.refs.filepath);
                         reflib.value = refs;
                         if (refs.length > 0) {
                               isFileMissing.value = false;
@@ -71,9 +70,10 @@ watch(() => props.refs.filepath, (newVal) => {
             </a>
             
             <div class="offcanvas-body">
-                  <div class="alert alert-warning" role="alert">{{ refs }}</div>
+                  <!--<div class="alert alert-warning" role="alert">Testing: {{ refs }}</div>-->
                   <FileUpload v-if="refs.refnum == 0 || toolVisible==true" @references="getAllRefs" />
                   <LibraryRef v-if="refs.refnum>0" :reflib="reflib" />
+                  <!--filepath exists but refs are empty-->
                   <div v-if="refs.filepath && isFileMissing" class="alert alert-warning" role="alert">The uploaded file missing...Please check your
                          <a href="https://tera-tools.com/project/files" target="_blank" class="alert-link">project files</a>
                          in TERA or <strong>Re-Upload File!</strong>
