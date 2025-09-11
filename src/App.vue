@@ -3,11 +3,12 @@ import CustomNode from './components/CustomNode.vue';
 import CustomTextNode from './components/CustomTextNode.vue';
 import CustomOffcanvasRef from './components/CustomOffcanvasRef.vue';
 
-import { VueFlow } from '@vue-flow/core';
+import { VueFlow, useVueFlow } from '@vue-flow/core';
 import { reactive, computed, getCurrentInstance } from "vue";
 import { Offcanvas } from 'bootstrap'
 //Store
 import { useStore } from 'vuex';
+
 const store = useStore();
 const { proxy } = getCurrentInstance();
 
@@ -48,6 +49,33 @@ const updateRefsObj = (event) => {
 
 }
 
+//import { toPng } from "html-to-image";
+import domtoimage from 'dom-to-image-more'; //Better for processing svg edges
+const { vueFlowRef } = useVueFlow();
+const exportImage = () => {
+      const el = vueFlowRef.value;
+      const scale = 2;
+      domtoimage.toPng(el, {
+            width: el.offsetWidth * scale,
+            height: el.offsetHeight * scale,
+            style: {
+                  transform: `scale(${scale})`,
+                  transformOrigin: "top left",
+                  width: `${el.offsetWidth}px`,
+                  height: `${el.offsetHeight}px`,
+                  backgroundColor: '#ffffff'  //BackgroundColor: White
+            },
+            quality: 1
+      }).then((dataUrl) => {
+            const link = document.createElement("a");
+            link.href = dataUrl;
+            link.download = "vueflow.png";
+            link.click();
+      }).catch((err) => {
+            console.error("Failed to download:", err);
+      });
+}
+
 const save = () => {
       proxy.$teraSync.saveState();
 }
@@ -64,7 +92,10 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
 <template>
       <nav class="navbar bg-dark border-bottom" data-bs-theme="dark">
             <div class="container-fluid d-flex justify-content-between align-items-center">
-                  <h5 class="navbar-brand mb-0 text-white text-start">Ref Store</h5>
+                  <div class="d-flex align-items-center">
+                        <h5 class="navbar-brand mb-0 text-white text-start">Ref Store</h5>
+                        <button class="btn btn-secondary" @click="exportImage"><i class="bi bi-image me-1"></i>Export</button>
+                  </div>
                   <div class="d-flex align-items-center">
                         <div class="me-2 text-white">{{ saveStatus }}</div>
                         <button v-if="saveStatus!=='Saved'" class="btn btn-outline-light" @click="save">Save </button>
@@ -85,6 +116,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
                         <strong>Other</strong>
                   </div>
             </div>
+            <!--<div ref="flowRef" class="flow-container">-->
             <VueFlow :nodes="vueFlowTable.nodes" :edges="vueFlowTable.edges" :onEdgeClick="onEdgeClick" :nodes-draggable="false"  :nodes-connectable="false" :pan-on-drag="false" :zoom-on-scroll="false" :zoom-on-double-click="false" fit-view>
                   <template #node-customNode="{id,data}">
                         <CustomNode :labels="data.labels" @link-clicked="(field)=>handleClick(id, field)" :refsObj="fieldObject"/>
@@ -93,6 +125,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
                         <CustomTextNode :labels="data.labels"/>
                   </template>
             </VueFlow>
+            <!--</div>-->
       </div>
       <CustomOffcanvasRef :refs="fieldObject" @updateRefsObj="updateRefsObj($event)"  />
 </template>
@@ -101,4 +134,11 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
 .card {
       overflow-x: auto;
 }
+
+/*.flow-container {
+  width: 100%;      
+  height: 100%;
+  background-color: #fff !important;
+}*/
+
 </style>
