@@ -69,7 +69,7 @@ const exportImage = () => {
       }).then((dataUrl) => {
             const link = document.createElement("a");
             link.href = dataUrl;
-            link.download = "vueflow.png";
+            link.download = "refsflow.png";
             link.click();
       }).catch((err) => {
             console.error("Failed to download:", err);
@@ -94,7 +94,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
             <div class="container-fluid d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center">
                         <h5 class="navbar-brand mb-0 text-white text-start">Ref Store</h5>
-                        <button class="btn btn-secondary" @click="exportImage"><i class="bi bi-image me-1"></i>Export</button>
+                        <button class="btn btn-secondary" @click="exportImage"><i class="bi bi-image me-1"></i> Export</button>
                   </div>
                   <div class="d-flex align-items-center">
                         <div class="me-2 text-white">{{ saveStatus }}</div>
