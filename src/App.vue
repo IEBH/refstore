@@ -51,7 +51,7 @@ const updateRefsObj = (event) => {
 
 //import { toPng } from "html-to-image";
 import domtoimage from 'dom-to-image-more'; //Better for processing svg edges
-const { vueFlowRef } = useVueFlow();
+const { vueFlowRef, fitView } = useVueFlow()
 const exportImage = () => {
       const el = vueFlowRef.value; //all elements of this flow
       const scale = 2;
@@ -89,7 +89,7 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
 // fit all the browsers
 onMounted(() => {
   const observer = new ResizeObserver(() => {
-    vueFlowRef({ padding: 0.1 })
+    fitView({ padding: 0.1})
   })
   if (vueFlowRef.value) {
     observer.observe(vueFlowRef.value)
