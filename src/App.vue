@@ -4,7 +4,7 @@ import CustomTextNode from './components/CustomTextNode.vue';
 import CustomOffcanvasRef from './components/CustomOffcanvasRef.vue';
 
 import { VueFlow, useVueFlow } from '@vue-flow/core';
-import { reactive, computed, getCurrentInstance } from "vue";
+import { reactive, computed, getCurrentInstance,onMounted } from "vue";
 import { Offcanvas } from 'bootstrap'
 //Store
 import { useStore } from 'vuex';
@@ -53,7 +53,7 @@ const updateRefsObj = (event) => {
 import domtoimage from 'dom-to-image-more'; //Better for processing svg edges
 const { vueFlowRef } = useVueFlow();
 const exportImage = () => {
-      const el = vueFlowRef.value;
+      const el = vueFlowRef.value; //all elements of this flow
       const scale = 2;
       domtoimage.toPng(el, {
             width: el.offsetWidth * scale,
@@ -85,7 +85,16 @@ const clear = () => {
       store.dispatch('resetStore');
 }
 
-const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'] )
+const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'])
+// fit all the browsers
+onMounted(() => {
+  const observer = new ResizeObserver(() => {
+    vueFlowRef({ padding: 0.1 })
+  })
+  if (vueFlowRef.value) {
+    observer.observe(vueFlowRef.value)
+  }
+})
 
 </script>
 
@@ -117,14 +126,16 @@ const saveStatus = computed(() => store.getters['__tera_file_sync/getSaveStatus'
                   </div>
             </div>
             <!--<div ref="flowRef" class="flow-container">-->
-            <VueFlow :nodes="vueFlowTable.nodes" :edges="vueFlowTable.edges" :onEdgeClick="onEdgeClick" :nodes-draggable="false"  :nodes-connectable="false" :pan-on-drag="false" :zoom-on-scroll="false" :zoom-on-double-click="false" fit-view>
-                  <template #node-customNode="{id,data}">
-                        <CustomNode :labels="data.labels" @link-clicked="(field)=>handleClick(id, field)" :refsObj="fieldObject"/>
-                  </template>
-                  <template #node-customTextNode="{data}">
-                        <CustomTextNode :labels="data.labels"/>
-                  </template>
-            </VueFlow>
+            <div style="width:100%;height:100%">
+                  <VueFlow :fit-view-on-init="true" :nodes="vueFlowTable.nodes" :edges="vueFlowTable.edges" :onEdgeClick="onEdgeClick" :nodes-draggable="false"  :nodes-connectable="false" :pan-on-drag="false" :zoom-on-scroll="false" :zoom-on-double-click="false" fit-view>
+                        <template #node-customNode="{id,data}">
+                              <CustomNode :labels="data.labels" @link-clicked="(field)=>handleClick(id, field)" :refsObj="fieldObject"/>
+                        </template>
+                        <template #node-customTextNode="{data}">
+                              <CustomTextNode :labels="data.labels"/>
+                        </template>
+                  </VueFlow>
+            </div>
             <!--</div>-->
       </div>
       <CustomOffcanvasRef :refs="fieldObject" @updateRefsObj="updateRefsObj($event)"  />
