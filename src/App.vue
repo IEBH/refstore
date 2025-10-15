@@ -103,11 +103,11 @@ onMounted(() => {
             <div class="container-fluid d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center">
                         <h5 class="navbar-brand mb-0 text-white text-start">Ref Store</h5>
-                        <button class="btn btn-secondary" @click="exportImage"><i class="bi bi-image me-1"></i> Export</button>
+                        <button class="btn btn-info" @click="exportImage"><i class="bi bi-image me-1"></i> Export</button>
                   </div>
                   <div class="d-flex align-items-center">
                         <div class="me-2 text-white">{{ saveStatus }}</div>
-                        <button v-if="saveStatus!=='Saved'" class="btn btn-outline-light" @click="save">Save </button>
+                        <button v-if="saveStatus!=='Saved'" class="btn btn-success" @click="save">Save </button>
                         <button v-else class="btn btn-danger" @click="clear">Clear</button>
                   </div>
             </div>
@@ -151,5 +151,8 @@ onMounted(() => {
   height: 100%;
   background-color: #fff !important;
 }*/
-
+.navbar {
+	background-image: linear-gradient(#6880b5, #465b8b, #5971a5);
+	color: #dcdee5;
+}
 </style>
