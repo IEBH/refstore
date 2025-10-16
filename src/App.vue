@@ -115,13 +115,13 @@ onMounted(() => {
     
       <div class="card" style="width: 100%; height: 100vh;">
             <div class="row g-1">
-                  <div class="col-4 text-center py-2" style="background-color: #DCDCDC;">
+                  <div class="col-4 text-center py-2" style="background-color: #d8e5f7;">
                         <strong>Designing</strong>
                   </div>
-                  <div class="col-5 text-center py-2" style="background-color: #D3D3D3;">
+                  <div class="col-5 text-center py-2" style="background-color: #c3d8f7;">
                         <strong>Searching</strong>
                   </div>
-                  <div class="col-3 text-center py-2" style="background-color: #DCDCDC;">
+                  <div class="col-3 text-center py-2" style="background-color: #a6c7f3;">
                         <strong>Other</strong>
                   </div>
             </div>
